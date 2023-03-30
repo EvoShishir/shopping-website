@@ -40,7 +40,7 @@ const Footer = () => {
           <small>Careers</small>
         </div>
         <div className="side-one">
-          <p>QuicK Link</p>
+          <p>Quick Link</p>
           <small>Share Location</small>
           <br></br>
           <small>Orders Tracking</small>
