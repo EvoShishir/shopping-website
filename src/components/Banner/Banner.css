@@ -1,0 +1,44 @@
+.main-banner{
+    display: flex;
+    justify-content: space-between;
+    background-color: #F4F6F5;
+    border-radius: 30px;
+    margin-top: 40px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.banner-items h1{
+    font-weight: 900;
+    font-style: normal;
+    font-size: 96px;
+    line-height: 100px;
+    margin-left: 119px;
+    margin-bottom: -30px;
+    margin-top: 100px;
+}
+
+.banner-items p{
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 48px;
+    letter-spacing: -0.05em;
+    margin-left: 119px;
+    color: #191818;
+}
+
+.shopbtn{
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 30px;
+    background-color: black;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 10px;
+    margin-left: 119px;
+    transition: 0.4s;
+}
+
+.shopbtn:hover{
+    background-color: rgba(0, 0, 0, 0.646);
+}

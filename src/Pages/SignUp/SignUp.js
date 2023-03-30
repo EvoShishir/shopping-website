@@ -1,0 +1,176 @@
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
+import { Link, useNavigate } from "react-router-dom";
+import "./SignUp.css";
+import image from "../../Images/1000_F_311185297_Ga1gl6pGUDx9mRE4Cf9yuYc9nbWyJOBP1.jpg";
+import { FaGoogle } from "react-icons/fa";
+import { firebaseApp } from "../../firebaseconfig";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { useDispatch } from "react-redux";
+
+const SignUp = () => {
+  const auth = getAuth(firebaseApp);
+  const navigate = useNavigate();
+  const provider = new GoogleAuthProvider();
+  const dispatch = useDispatch();
+
+  const validationSchema = yup
+    .object({
+      email: yup.string().email().required(),
+      password: yup
+        .string()
+        .required()
+        .matches(
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
+          "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+        ),
+    })
+    .required();
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
+  // const onSubmit = (data) => console.log(data);
+
+  const handleGoogleSignIn = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result?.user;
+        dispatch({
+          type: "STORE_USER",
+          payload: {
+            name: user.displayName,
+            email: user.email,
+            avatar: user.photoURL,
+          },
+        });
+        return navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handlePasswordAuthentication = (data) => {
+    console.log(data);
+    if (data.password !== data.confirmPassword)
+      return alert("Passwords don't match");
+    else {
+      createUserWithEmailAndPassword(auth, data.email, data.password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          dispatch({
+            type: "STORE_USER",
+            payload: {
+              name: user.displayName,
+              email: user.email,
+              avatar: user.photoURL,
+            },
+          });
+          return navigate("/");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
+
+  const signupFields = [
+    { name: "email", placeholder: "Your Email Address", type: "text" },
+    { name: "password", placeholder: "Enter Password", type: "password" },
+    {
+      name: "confirmPassword",
+      placeholder: "Confirm Password",
+      type: "password",
+    },
+    {
+      name: "gender",
+      placeholder: "Select Gender",
+      type: "select",
+      options: [
+        { label: "Male", value: "male" },
+        { label: "Female", value: "female" },
+      ],
+    },
+  ];
+
+  return (
+    <div className="background">
+      <div className="sign-up-container">
+        <div>
+          <img src={image} alt="" />
+        </div>
+        <form
+          className="form"
+          onSubmit={handleSubmit(handlePasswordAuthentication)}
+        >
+          <h3>Create an account</h3>
+          <br />
+          {signupFields.map((field, key) => {
+            if (field.type === "select")
+              return (
+                <>
+                  <br />
+                  <select {...register(field.name)} key={key} name={field.name}>
+                    {field.options.map((option, key) => (
+                      <option key={key} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </>
+              );
+
+            return (
+              <>
+                <input
+                  {...register(field.name)}
+                  key={key}
+                  type={field.type}
+                  name={field.name}
+                  placeholder={field.placeholder}
+                />
+                <br />
+                <small style={{ color: "red" }}>
+                  {errors[field.name]?.message}
+                </small>
+              </>
+            );
+          })}
+          <br />
+          <Link>
+            <button
+              className="signup-btn"
+              onClick={handleSubmit(handlePasswordAuthentication)}
+            >
+              Create account
+            </button>
+          </Link>
+          <br />
+          <h4>or,</h4>
+          <br />
+          <button className="signup-btn-g" onClick={handleGoogleSignIn}>
+            <FaGoogle />
+            Sign up with Google
+          </button>
+          <h4>
+            Already have an account? <a href="/login">Login</a>
+          </h4>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default SignUp;

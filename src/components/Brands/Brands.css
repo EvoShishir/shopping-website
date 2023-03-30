@@ -1,0 +1,7 @@
+.brands{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #EBD96B;
+    padding: 60px 170px;
+}
