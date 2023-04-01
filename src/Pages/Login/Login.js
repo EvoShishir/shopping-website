@@ -76,8 +76,20 @@ const Login = () => {
   };
 
   const loginFields = [
-    { name: "email", placeholder: "Your Email Address", type: "text" },
-    { name: "password", placeholder: "Enter Password", type: "password" },
+    {
+      name: "email",
+      placeholder: "Your Email Address",
+      type: "text",
+      label: "Email",
+      required: true,
+    },
+    {
+      name: "password",
+      placeholder: "Enter Password",
+      type: "password",
+      label: "Password",
+      required: true,
+    },
   ];
 
   return (
@@ -91,7 +103,15 @@ const Login = () => {
           <br />
           {loginFields.map((field, key) => {
             return (
-              <>
+              <div>
+                <p>
+                  {field.label}{" "}
+                  {field.required ? (
+                    <span style={{ color: "red" }}>*</span>
+                  ) : (
+                    ""
+                  )}
+                </p>
                 <input
                   {...register(field.name)}
                   key={key}
@@ -103,7 +123,7 @@ const Login = () => {
                 <small style={{ color: "red" }}>
                   {errors[field.name]?.message}
                 </small>
-              </>
+              </div>
             );
           })}
           <br />
