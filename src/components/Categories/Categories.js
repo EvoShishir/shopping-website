@@ -1,37 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Categories.css";
-import hoodie from "../../Images/Rectangle 20.png";
-import jacket from "../../Images/Rectangle 21.png";
-import tee from "../../Images/Rectangle 22.png";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 
 const Categories = () => {
+  const { categories } = useSelector((state) => state.category);
+  console.log(categories);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    getAllCategories();
+  }, []);
+
+  const getAllCategories = async () => {
+    const { data } = await axios.get(
+      "https://dummyjson.com/products/categories"
+    );
+    dispatch({ type: "STORE_CATEGORY", payload: data });
+  };
+
   return (
     <div>
       <div className="main">
-        <h1>NEW ARRIVALS!</h1>
+        <h1>ALL PRODUCT CATEGORIES</h1>
       </div>
-      <div className="grid">
-        <div>
-          <img src={hoodie} alt="" />
-          <div className="text">
-            <h5>Hoodies & Sweatshirt</h5>
-            <p>Explore Now!</p>
+      <div className="categories">
+        {categories?.map((category, key) => (
+          <div key={key}>
+            <button className="btn">{category}</button>
           </div>
-        </div>
-        <div>
-          <img src={jacket} alt="" />
-          <div className="text">
-            <h5>Coats & Parkas</h5>
-            <p>Explore Now!</p>
-          </div>
-        </div>
-        <div>
-          <img src={tee} alt="" />
-          <div className="text">
-            <h5>Tees & T-Shirt</h5>
-            <p>Explore Now!</p>
-          </div>
-        </div>
+        ))}
+        <br />
       </div>
     </div>
   );

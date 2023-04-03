@@ -1,16 +1,8 @@
-/* .products-container{
-    margin-left: 100px;
-    margin-right: 100px;
-    font-family: 'Poppins';
-    font-weight: 500;
-    font-size: 20px;
-} */
-
 .product img{
     border-radius: 20px;
     height: 333px;
     width: 500px;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .products-container{
@@ -27,7 +19,6 @@
     background-color: #F4F6F5;
     padding-left: 20px;
     padding-right: 20px;
-    /* padding-bottom: 20px; */
     border-radius: 20px;
     margin: 20px;
 }

@@ -3,7 +3,7 @@
     font-size: 48px;
     line-height: 50px;
     letter-spacing: 0.06em;
-    padding: 50px 100px;
+    padding: 50px 100px 20px 100px;
 }
 
 .grid{
@@ -31,4 +31,31 @@
     line-height: 50px;
     letter-spacing: -0.04em;
     color: #7F7F7F;
+}
+
+.categories{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    row-gap: 20px;
+    column-gap: 10px;
+    margin-left: 100px;
+    margin-right: 70px;
+    margin-bottom: 20px;
+}
+
+.btn{
+    font-family: 'Poppins';
+    text-decoration: none;
+    font-size: 20px;
+    width: 200px;
+    height: 80px;
+    border-radius: 10px;
+    text-transform: capitalize;
+    transition: 400ms;
+    background: rgb(63,215,251);
+}
+
+.btn:hover{
+    background-color: #fc46e9;
+    cursor: pointer;
 }

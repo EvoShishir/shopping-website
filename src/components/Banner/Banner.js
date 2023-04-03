@@ -16,7 +16,7 @@ const Banner = () => {
           CLOTHES.
         </h1>
         <p>Live for Influential and Innovative fashion!</p>
-        <Link to={"/nigga"}>
+        <Link to={"/products"}>
           <button className="shopbtn">Shop Now</button>
         </Link>
       </div>

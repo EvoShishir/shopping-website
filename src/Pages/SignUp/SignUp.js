@@ -36,12 +36,10 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(validationSchema),
   });
-  // const onSubmit = (data) => console.log(data);
 
   const handleGoogleSignIn = () => {
     signInWithPopup(auth, provider)
@@ -87,18 +85,33 @@ const SignUp = () => {
   };
 
   const signupFields = [
-    { name: "email", placeholder: "Your Email Address", type: "text" },
-    { name: "password", placeholder: "Enter Password", type: "password" },
+    {
+      name: "email",
+      placeholder: "Your Email Address",
+      type: "text",
+      label: "Email:",
+      required: true,
+    },
+    {
+      name: "password",
+      placeholder: "Enter Password",
+      type: "password",
+      label: "Password:",
+      required: true,
+    },
     {
       name: "confirmPassword",
       placeholder: "Confirm Password",
       type: "password",
+      label: "Confirm Password:",
+      required: true,
     },
     {
       name: "gender",
       placeholder: "Select Gender",
       type: "select",
       options: [
+        { label: "Select", value: null },
         { label: "Male", value: "male" },
         { label: "Female", value: "female" },
       ],
@@ -115,8 +128,6 @@ const SignUp = () => {
           className="form"
           onSubmit={handleSubmit(handlePasswordAuthentication)}
         >
-          <h3>Create an account</h3>
-          <br />
           {signupFields.map((field, key) => {
             if (field.type === "select")
               return (
@@ -134,6 +145,14 @@ const SignUp = () => {
 
             return (
               <>
+                <h3>
+                  {field.label}{" "}
+                  {field.required ? (
+                    <span style={{ color: "red" }}>*</span>
+                  ) : (
+                    ""
+                  )}
+                </h3>
                 <input
                   {...register(field.name)}
                   key={key}

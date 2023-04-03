@@ -15,5 +15,5 @@ code {
 }
 
 a:hover{
-  color: unset;
+  color: black !important;
 }

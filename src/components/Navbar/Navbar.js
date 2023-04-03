@@ -1,11 +1,17 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../Images/Vector.png";
 import "./Navbar.css";
 
 const Navbar = () => {
   const { userInfo } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    dispatch({ type: "LOGOUT_USER" });
+    return navigate("/");
+  };
   return (
     <nav className="nav">
       <div className="logo">
@@ -22,9 +28,9 @@ const Navbar = () => {
           <a href="/">Lifestyle</a>
         </div>
         {userInfo ? (
-          <Link to={"/logout"}>
-            <button className="sign-up">LOGOUT</button>
-          </Link>
+          <button onClick={handleLogout} className="sign-up">
+            LOGOUT
+          </button>
         ) : (
           <Link to={"/login"}>
             <button className="sign-up">LOGIN</button>

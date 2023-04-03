@@ -30,7 +30,6 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(validationSchema),
@@ -76,8 +75,20 @@ const Login = () => {
   };
 
   const loginFields = [
-    { name: "email", placeholder: "Your Email Address", type: "text" },
-    { name: "password", placeholder: "Enter Password", type: "password" },
+    {
+      name: "email",
+      placeholder: "Your Email Address",
+      type: "text",
+      label: "Email:",
+      required: true,
+    },
+    {
+      name: "password",
+      placeholder: "Enter Password",
+      type: "password",
+      label: "Password:",
+      required: true,
+    },
   ];
 
   return (
@@ -87,11 +98,17 @@ const Login = () => {
           <img src={image} alt="" />
         </div>
         <form className="form" onSubmit={handleSubmit(handleLogin)}>
-          <h3>Login to your account</h3>
-          <br />
           {loginFields.map((field, key) => {
             return (
               <>
+                <h3>
+                  {field.label}{" "}
+                  {field.required ? (
+                    <span style={{ color: "red" }}>*</span>
+                  ) : (
+                    ""
+                  )}
+                </h3>
                 <input
                   {...register(field.name)}
                   key={key}

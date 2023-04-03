@@ -5,6 +5,11 @@ export const userReducer = (state = {}, action) => {
         ...state,
         userInfo: action.payload,
       };
+    case "LOGOUT_USER":
+      return {
+        ...state,
+        userInfo: null,
+      };
     default:
       return state;
   }
