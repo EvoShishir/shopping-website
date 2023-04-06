@@ -1,0 +1,15 @@
+.core__btn {
+  padding: 15px 30px;
+  border: none;
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  font-family: var(--font-family);
+  border-radius: 10px;
+  transition: background-color 400ms ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(80, 80, 80);
+  }
+}

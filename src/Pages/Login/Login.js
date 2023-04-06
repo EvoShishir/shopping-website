@@ -4,7 +4,7 @@ import {
   GoogleAuthProvider,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import "./Login.css";
 import image from "../../Images/1000_F_311185297_Ga1gl6pGUDx9mRE4Cf9yuYc9nbWyJOBP1.jpg";
 import { FaGoogle } from "react-icons/fa";
@@ -12,9 +12,11 @@ import { firebaseApp } from "../../firebaseconfig";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const Login = () => {
+  const { user } = useSelector((state) => state.user);
   const auth = getAuth(firebaseApp);
   const navigate = useNavigate();
   const provider = new GoogleAuthProvider();
@@ -27,6 +29,9 @@ const Login = () => {
     })
     .required();
 
+  useEffect(() => {
+    if (user) return navigate("/");
+  }, []);
   const {
     register,
     handleSubmit,

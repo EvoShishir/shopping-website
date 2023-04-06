@@ -2,9 +2,11 @@ import React, { useEffect } from "react";
 import "./Categories.css";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Categories = () => {
   const { categories } = useSelector((state) => state.category);
+  const navigate = useNavigate();
   console.log(categories);
   const dispatch = useDispatch();
 
@@ -19,6 +21,10 @@ const Categories = () => {
     dispatch({ type: "STORE_CATEGORY", payload: data });
   };
 
+  // this func will execute when category will be clicked
+  const handleCategoryClick = (category) => {
+    navigate(`/products?category=${category}`);
+  };
   return (
     <div>
       <div className="main">
@@ -27,7 +33,12 @@ const Categories = () => {
       <div className="categories">
         {categories?.map((category, key) => (
           <div key={key}>
-            <button className="btn">{category}</button>
+            <button
+              className="btn"
+              onClick={() => handleCategoryClick(category)}
+            >
+              {category}
+            </button>
           </div>
         ))}
         <br />
