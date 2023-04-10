@@ -5,6 +5,11 @@ export const productReducer = (state = {}, action) => {
         ...state,
         products: action.payload,
       };
+    case "ADD_CATEGORY_PRODUCT":
+      return {
+        ...state,
+        categoryProducts: action.payload,
+      };
     default:
       return state;
   }

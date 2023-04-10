@@ -1,0 +1,29 @@
+.profile{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    font-family: "poppins";
+    margin: 40px 100px;
+}
+
+.profile img{
+    border-radius: 50%;
+}
+
+.table{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+}
+
+table, th, td {
+    border-bottom: 1px solid #ddd;
+    height: 50px;
+}
+
+table{
+    width: 40%;
+    border-collapse: collapse;
+    text-align: center;
+}
+

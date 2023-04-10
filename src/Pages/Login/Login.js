@@ -12,9 +12,11 @@ import { firebaseApp } from "../../firebaseconfig";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const Login = () => {
+  const { user } = useSelector((state) => state.user);
   const auth = getAuth(firebaseApp);
   const navigate = useNavigate();
   const provider = new GoogleAuthProvider();
@@ -34,6 +36,10 @@ const Login = () => {
   } = useForm({
     resolver: yupResolver(validationSchema),
   });
+
+  useEffect(() => {
+    if (user) return navigate("/");
+  }, []);
 
   const handleGoogleSignIn = () => {
     signInWithPopup(auth, provider)

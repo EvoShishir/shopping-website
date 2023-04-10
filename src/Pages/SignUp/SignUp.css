@@ -105,3 +105,17 @@ a{
 a:hover{
     color: rgb(74, 132, 240);
 }
+
+.container{
+    max-width: 420px;
+}
+
+.error {
+    color: red;
+    white-space: pre-wrap;
+    /* max-width: 100px; */
+    /* margin-right: 100px; */
+    /* padding: 100px; */
+    /* margin: 10px; */
+    /* overflow-wrap: break-word; */
+}

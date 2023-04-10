@@ -5,7 +5,7 @@ import logo from "../../Images/Vector.png";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const { userInfo } = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -26,8 +26,9 @@ const Navbar = () => {
           <a href="/">Fashion</a>
           <a href="/">Favourite</a>
           <a href="/">Lifestyle</a>
+          <a href="/profile">Profile</a>
         </div>
-        {userInfo ? (
+        {user ? (
           <button onClick={handleLogout} className="sign-up">
             LOGOUT
           </button>

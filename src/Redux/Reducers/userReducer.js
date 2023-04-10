@@ -3,12 +3,12 @@ export const userReducer = (state = {}, action) => {
     case "STORE_USER":
       return {
         ...state,
-        userInfo: action.payload,
+        user: action.payload,
       };
     case "LOGOUT_USER":
       return {
         ...state,
-        userInfo: null,
+        user: null,
       };
     default:
       return state;

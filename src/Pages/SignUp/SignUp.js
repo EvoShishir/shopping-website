@@ -28,7 +28,7 @@ const SignUp = () => {
         .required()
         .matches(
           /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
-          "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+          `At least 8 Characters\none Uppercase one Lowercase one Number one Special Case`
         ),
     })
     .required();
@@ -144,7 +144,7 @@ const SignUp = () => {
               );
 
             return (
-              <>
+              <div className="container">
                 <h3>
                   {field.label}{" "}
                   {field.required ? (
@@ -161,10 +161,8 @@ const SignUp = () => {
                   placeholder={field.placeholder}
                 />
                 <br />
-                <small style={{ color: "red" }}>
-                  {errors[field.name]?.message}
-                </small>
-              </>
+                <small className="error">{errors[field.name]?.message}</small>
+              </div>
             );
           })}
           <br />
