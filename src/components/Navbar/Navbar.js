@@ -23,10 +23,8 @@ const Navbar = () => {
       <div className="navLinks">
         <div className="navItems">
           <a href="/products">Catalogue</a>
-          <a href="/">Fashion</a>
-          <a href="/">Favourite</a>
-          <a href="/">Lifestyle</a>
           <a href="/profile">Profile</a>
+          <a href="/cart">Cart</a>
         </div>
         {user ? (
           <button onClick={handleLogout} className="sign-up">

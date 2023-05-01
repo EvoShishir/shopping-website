@@ -8,14 +8,22 @@
     margin-right: 100px;
 }
 
+.banner-items{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-left: 119px;
+}
+
 .banner-items h1{
     font-weight: 900;
     font-style: normal;
     font-size: 96px;
     line-height: 100px;
-    margin-left: 119px;
-    margin-bottom: -30px;
-    margin-top: 100px;
+}
+
+.yellow{
+    background-color: #EBD96B;
+    transform: rotate(-2deg);
 }
 
 .banner-items p{
@@ -23,20 +31,25 @@
     font-size: 32px;
     line-height: 48px;
     letter-spacing: -0.05em;
-    margin-left: 119px;
     color: #191818;
+}
+
+.main-banner img{
+    height: 600px;
+    width: 666px;
+    margin-right: 119px;
 }
 
 .shopbtn{
     font-family: 'Poppins';
     font-weight: 500;
-    font-size: 30px;
+    font-size: 25px;
     background-color: black;
     color: white;
     padding: 10px 30px;
     border-radius: 10px;
-    margin-left: 119px;
     transition: 0.4s;
+    cursor: pointer;
 }
 
 .shopbtn:hover{

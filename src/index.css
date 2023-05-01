@@ -17,3 +17,8 @@ code {
 a:hover{
   color: black !important;
 }
+
+*{
+  margin: 0px;
+  padding: 0px;
+}

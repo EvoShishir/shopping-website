@@ -3,8 +3,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../components/Layout/Layout";
 import "./Products.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { HashLoader } from "react-spinners";
+import { ADD_TO_CART } from "../../Redux/typings/reducerTypings";
 
 const Products = () => {
   const { products, categoryProducts } = useSelector((state) => state.product);
@@ -13,6 +14,7 @@ const Products = () => {
   const queryParams = new URLSearchParams(location.search);
   const categoryName = queryParams.get("category");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (categoryName) {
@@ -27,7 +29,6 @@ const Products = () => {
       setLoading(true);
       const { data } = await axios.get("https://dummyjson.com/products");
       dispatch({ type: "STORE_PRODUCT", payload: data.products });
-      console.log(data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -52,6 +53,8 @@ const Products = () => {
       }, 2000);
     }
   };
+
+  const handleProductClick = (id) => navigate(`/products/${id}`);
 
   return (
     <Layout>
@@ -80,18 +83,29 @@ const Products = () => {
                   <p>{categoryProduct.description.slice(0, 40)}...</p>
                   <div className="price-and-btn">
                     <h4>${categoryProduct.price}</h4>
-                    <button className="cart-btn">Add To Cart</button>
+                    <button
+                      className="cart-btn"
+                      onClick={() => handleProductClick(categoryProduct.id)}
+                    >
+                      SHOW MORE INFO
+                    </button>
                   </div>
                 </div>
               ))
             : products?.map((product, key) => (
                 <div className="product" key={key}>
                   <img src={product.thumbnail} alt={product.title} />
+
                   <h4>{product.title}</h4>
                   <p>{product.description.slice(0, 40)}...</p>
                   <div className="price-and-btn">
                     <h4>${product.price}</h4>
-                    <button className="cart-btn">Add To Cart</button>
+                    <button
+                      className="cart-btn"
+                      onClick={() => handleProductClick(product.id)}
+                    >
+                      SHOW MORE INFO
+                    </button>
                   </div>
                 </div>
               ))}

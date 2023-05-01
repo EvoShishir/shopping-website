@@ -43,6 +43,7 @@
     padding: 15px 22px;
     color: white;
     transition: 0.4s;
+    cursor: pointer;
 }
 
 .sign-up:hover{
