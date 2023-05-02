@@ -5,7 +5,6 @@ import Layout from "../../components/Layout/Layout";
 import "./Products.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import { HashLoader } from "react-spinners";
-import { ADD_TO_CART } from "../../Redux/typings/reducerTypings";
 
 const Products = () => {
   const { products, categoryProducts } = useSelector((state) => state.product);

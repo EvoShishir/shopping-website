@@ -1,4 +1,5 @@
 .footer{
+    margin-top: 50px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 90px 100px;

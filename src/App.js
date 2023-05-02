@@ -6,6 +6,7 @@ import SignUp from "./Pages/SignUp/SignUp";
 import Profile from "./Pages/Profile/Profile";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import SingleProductPage from "./Pages/SingleProductPage/SingleProductPage";
+import Cart from "./Pages/Cart/Cart";
 
 function App() {
   const router = createBrowserRouter([
@@ -25,6 +26,10 @@ function App() {
     {
       path: "/products/:id",
       element: <SingleProductPage />,
+    },
+    {
+      path: "/cart",
+      element: <Cart />,
     },
     {
       path: "/profile",

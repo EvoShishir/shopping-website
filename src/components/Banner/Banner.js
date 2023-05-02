@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Banner.css";
-import bannerImage from "../../Images/incendiary-fantastically-beautiful-girl-coat-eco-fur-moves-fun-picture-lovely-lady-pink-clothes-removebg-preview 1.png";
+import image from "../../Images/image.png";
 
 const Banner = () => {
   return (
@@ -16,7 +16,7 @@ const Banner = () => {
           <button className="shopbtn">Shop Now</button>
         </Link>
       </div>
-      <img src={bannerImage} alt="" />
+      <img src={image} alt="" />
     </div>
   );
 };
