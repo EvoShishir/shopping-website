@@ -7,6 +7,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import image from "../../Images/1000_F_311185297_Ga1gl6pGUDx9mRE4Cf9yuYc9nbWyJOBP1.jpg";
+import image2 from "../../Images/Rectangle 20.png";
 import { FaGoogle } from "react-icons/fa";
 import { firebaseApp } from "../../firebaseconfig";
 import { useForm } from "react-hook-form";
@@ -14,6 +15,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import Layout from "../../components/Layout/Layout";
 
 const Login = () => {
   const { user } = useSelector((state) => state.user);
@@ -98,56 +100,61 @@ const Login = () => {
   ];
 
   return (
-    <div className="background">
-      <div className="sign-up-container">
-        <div>
-          <img src={image} alt="" />
-        </div>
-        <form className="form" onSubmit={handleSubmit(handleLogin)}>
-          {loginFields.map((field, key) => {
-            return (
-              <>
-                <h3>
-                  {field.label}{" "}
-                  {field.required ? (
-                    <span style={{ color: "red" }}>*</span>
-                  ) : (
-                    ""
-                  )}
-                </h3>
-                <input
-                  {...register(field.name)}
-                  key={key}
-                  type={field.type}
-                  name={field.name}
-                  placeholder={field.placeholder}
-                />
-                <br />
-                <small style={{ color: "red" }}>
-                  {errors[field.name]?.message}
-                </small>
-              </>
-            );
-          })}
-          <br />
-          <Link>
-            <button className="signup-btn" onClick={handleSubmit(handleLogin)}>
-              Login
+    <Layout>
+      <div className="background">
+        <div className="sign-up-container">
+          <div>
+            <img src={image2} alt="" />
+          </div>
+          <form className="form" onSubmit={handleSubmit(handleLogin)}>
+            {loginFields.map((field, key) => {
+              return (
+                <>
+                  <h3>
+                    {field.label}{" "}
+                    {field.required ? (
+                      <span style={{ color: "red" }}>*</span>
+                    ) : (
+                      ""
+                    )}
+                  </h3>
+                  <input
+                    {...register(field.name)}
+                    key={key}
+                    type={field.type}
+                    name={field.name}
+                    placeholder={field.placeholder}
+                  />
+                  <br />
+                  <small style={{ color: "red" }}>
+                    {errors[field.name]?.message}
+                  </small>
+                </>
+              );
+            })}
+            <br />
+            <Link>
+              <button
+                className="signup-btn"
+                onClick={handleSubmit(handleLogin)}
+              >
+                Login
+              </button>
+            </Link>
+            <br />
+            <h4>or,</h4>
+            <br />
+            <button className="signup-btn-g" onClick={handleGoogleSignIn}>
+              <FaGoogle />
+              Sign in with Google
             </button>
-          </Link>
-          <br />
-          <h4>or,</h4>
-          <br />
-          <button className="signup-btn-g" onClick={handleGoogleSignIn}>
-            <FaGoogle />
-            Sign in with Google
-          </button>
-          <h4>
-            Don't have an account? <a href="/sign-up">Sign Up</a>
-          </h4>
-        </form>
+            <h4>
+              Don't have an account? <a href="/sign-up">Sign Up</a>
+            </h4>
+          </form>
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

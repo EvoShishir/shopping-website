@@ -29,12 +29,24 @@
 
 .cartItem img{
     width: 50%;
+    height: 142px;
 }
 
 .price-breakdown{
+    display: flex;
     margin-top: 40px;
+    flex-direction: column;
+}
+
+.breakdown{
     display: flex;
     gap: 30px;
+    justify-content: flex-end;
+}
+
+.total-price{
+    margin-top: 20px;
+    display: flex;
     justify-content: flex-end;
 }
 
@@ -67,6 +79,20 @@
 }
 
 .go-back-btn:hover{
-    background-color: whitesmoke;
-    border-radius: 10px;
+    background-color: rgb(178, 177, 177);
+}
+
+.checkout-btn{
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 15px;
+    background-color: black;
+    color: white;
+    padding: 10px 30px;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.checkout-btn:hover{
+    background-color: rgba(0, 0, 0, 0.646);
 }

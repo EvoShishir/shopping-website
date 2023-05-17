@@ -7,12 +7,14 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import "./SignUp.css";
 import image from "../../Images/1000_F_311185297_Ga1gl6pGUDx9mRE4Cf9yuYc9nbWyJOBP1.jpg";
+import image2 from "../../Images/Rectangle 21.png";
 import { FaGoogle } from "react-icons/fa";
 import { firebaseApp } from "../../firebaseconfig";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
+import Layout from "../../components/Layout/Layout";
 
 const SignUp = () => {
   const auth = getAuth(firebaseApp);
@@ -119,74 +121,80 @@ const SignUp = () => {
   ];
 
   return (
-    <div className="background">
-      <div className="sign-up-container">
-        <div>
-          <img src={image} alt="" />
-        </div>
-        <form
-          className="form"
-          onSubmit={handleSubmit(handlePasswordAuthentication)}
-        >
-          {signupFields.map((field, key) => {
-            if (field.type === "select")
-              return (
-                <>
-                  <br />
-                  <select {...register(field.name)} key={key} name={field.name}>
-                    {field.options.map((option, key) => (
-                      <option key={key} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
-                </>
-              );
+    <Layout>
+      <div className="background">
+        <div className="sign-up-container">
+          <div>
+            <img src={image2} alt="" />
+          </div>
+          <form
+            className="form"
+            onSubmit={handleSubmit(handlePasswordAuthentication)}
+          >
+            {signupFields.map((field, key) => {
+              if (field.type === "select")
+                return (
+                  <>
+                    <br />
+                    <select
+                      {...register(field.name)}
+                      key={key}
+                      name={field.name}
+                    >
+                      {field.options.map((option, key) => (
+                        <option key={key} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                  </>
+                );
 
-            return (
-              <div className="container">
-                <h3>
-                  {field.label}{" "}
-                  {field.required ? (
-                    <span style={{ color: "red" }}>*</span>
-                  ) : (
-                    ""
-                  )}
-                </h3>
-                <input
-                  {...register(field.name)}
-                  key={key}
-                  type={field.type}
-                  name={field.name}
-                  placeholder={field.placeholder}
-                />
-                <br />
-                <small className="error">{errors[field.name]?.message}</small>
-              </div>
-            );
-          })}
-          <br />
-          <Link>
-            <button
-              className="signup-btn"
-              onClick={handleSubmit(handlePasswordAuthentication)}
-            >
-              Create account
+              return (
+                <div className="container">
+                  <h3>
+                    {field.label}{" "}
+                    {field.required ? (
+                      <span style={{ color: "red" }}>*</span>
+                    ) : (
+                      ""
+                    )}
+                  </h3>
+                  <input
+                    {...register(field.name)}
+                    key={key}
+                    type={field.type}
+                    name={field.name}
+                    placeholder={field.placeholder}
+                  />
+                  <br />
+                  <small className="error">{errors[field.name]?.message}</small>
+                </div>
+              );
+            })}
+            <br />
+            <Link>
+              <button
+                className="signup-btn"
+                onClick={handleSubmit(handlePasswordAuthentication)}
+              >
+                Create account
+              </button>
+            </Link>
+            <br />
+            <h4>or,</h4>
+            <br />
+            <button className="signup-btn-g" onClick={handleGoogleSignIn}>
+              <FaGoogle />
+              Sign up with Google
             </button>
-          </Link>
-          <br />
-          <h4>or,</h4>
-          <br />
-          <button className="signup-btn-g" onClick={handleGoogleSignIn}>
-            <FaGoogle />
-            Sign up with Google
-          </button>
-          <h4>
-            Already have an account? <a href="/login">Login</a>
-          </h4>
-        </form>
+            <h4>
+              Already have an account? <a href="/login">Login</a>
+            </h4>
+          </form>
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

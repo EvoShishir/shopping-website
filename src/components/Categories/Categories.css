@@ -35,7 +35,7 @@
 
 .categories{
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     row-gap: 20px;
     column-gap: 10px;
     margin-left: 100px;
@@ -47,15 +47,14 @@
     font-family: 'Poppins';
     text-decoration: none;
     font-size: 20px;
-    width: 200px;
+    width: 210px;
     height: 80px;
-    border-radius: 10px;
     text-transform: capitalize;
     transition: 400ms;
-    background: rgb(63,215,251);
+    background-color: white;
 }
 
 .btn:hover{
-    background-color: #fc46e9;
+    background-color: #EBD96B;
     cursor: pointer;
 }

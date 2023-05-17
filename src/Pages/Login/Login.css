@@ -1,43 +1,5 @@
-.background{
-    background-image: url("https://as2.ftcdn.net/v2/jpg/02/71/28/73/1000_F_271287359_yVAfGSCqLNXcBV9ZmNhmO9anGYhRp7zd.jpg");
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position-y: center;
-    padding: 30px;
-}
-
-.sign-up-container{
-    background-color: #ffdd57;
-    border-radius: 20px;
-    padding: 20px;
-    padding-bottom: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 170px 400px;
-    box-shadow: 10px 10px 80px;
-}
-
-.sign-up-container h3{
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 900;
-    margin-bottom: 1px;
-    margin-left: 5px;
-}
-
-.sign-up-container h4{
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 900;
-    margin-bottom: -10px;
-    text-align: center;
-}
-
 .sign-up-container img{
-    border-radius: 20px;
-    margin-right: 50px;
-    margin-top: 20px;
+    height: 60vh;
 }
 
 input{
@@ -51,49 +13,6 @@ input{
 
 input[placeholder]{
     font-family: 'Poppins';
-}
-
-.signup-btn{
-    margin-top: 10px;
-    font-family: 'Poppins';
-    font-weight: 500;
-    width: 400px;
-    font-size: 20px;
-    background-color: black;
-    color: white;
-    padding: 10px 30px;
-    border-radius: 30px;
-    transition: 0.4s;
-}
-
-.signup-btn-g{
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    font-family: 'Poppins';
-    font-weight: 500;
-    width: 400px;
-    font-size: 20px;
-    background-color: rgb(19, 100, 251);
-    color: white;
-    padding: 10px 30px;
-    border-radius: 30px;
-    border: 0px solid black;
-    transition: 0.4s;
-}
-
-.signup-btn-g span{
-    text-decoration: none;
-}
-
-.signup-btn:hover{
-    background-color: rgba(0, 0, 0, 0.646);
-}
-
-.signup-btn-g:hover{
-    background-color: rgb(74, 132, 240);
 }
 
 a{

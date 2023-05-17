@@ -2,12 +2,10 @@ import React from "react";
 import Layout from "../../components/Layout/Layout";
 import { useSelector } from "react-redux";
 import "./Cart.css";
-import Button from "../../components/core/Button/Button";
 import CustomStepper from "../../components/CustomStepper/CustomStepper";
 
 const Cart = () => {
   const { cart } = useSelector((state) => state.cart);
-  console.log(cart);
 
   return (
     <Layout>
@@ -31,22 +29,30 @@ const Cart = () => {
           </div>
         ))}
         <div className="price-breakdown">
-          <div>
-            <p className="titles">Subtotal</p>
-            <p className="prices">$1600</p>
+          <div className="breakdown">
+            <div>
+              <p className="titles">Subtotal</p>
+              <p className="prices">$1600</p>
+            </div>
+            <div>
+              <p className="titles">Shipping</p>
+              <p className="prices">$40</p>
+            </div>
+            <div>
+              <p className="titles">Tax</p>
+              <p className="prices">$100</p>
+            </div>
           </div>
-          <div>
-            <p className="titles">Shipping</p>
-            <p className="prices">$40</p>
-          </div>
-          <div>
-            <p className="titles">Total</p>
-            <p className="grand-price">$1640</p>
+          <div className="total-price">
+            <div>
+              <p className="titles">Grand Total</p>
+              <p className="grand-price">$1740</p>
+            </div>
           </div>
         </div>
         <div className="cart-buttons">
           <button className="go-back-btn">Continue Shopping</button>
-          <Button title="Checkout" />
+          <button className="checkout-btn">Checkout</button>
         </div>
       </div>
     </Layout>

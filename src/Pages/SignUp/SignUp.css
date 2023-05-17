@@ -1,21 +1,14 @@
-.background{
-    background-image: url("https://as2.ftcdn.net/v2/jpg/02/71/28/73/1000_F_271287359_yVAfGSCqLNXcBV9ZmNhmO9anGYhRp7zd.jpg");
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position-y: center;
-    padding: 30px;
-}
-
 .sign-up-container{
-    background-color: #ffdd57;
+    background-color: #F4F6F5;
     border-radius: 20px;
     padding: 20px;
     padding-bottom: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 170px 400px;
-    box-shadow: 10px 10px 80px;
+    gap: 40px;
+    margin: 0px 400px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .sign-up-container h3{
@@ -113,9 +106,4 @@ a:hover{
 .error {
     color: red;
     white-space: pre-wrap;
-    /* max-width: 100px; */
-    /* margin-right: 100px; */
-    /* padding: 100px; */
-    /* margin: 10px; */
-    /* overflow-wrap: break-word; */
 }
