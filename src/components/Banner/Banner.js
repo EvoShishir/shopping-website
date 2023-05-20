@@ -16,7 +16,7 @@ const Banner = () => {
           <button className="shopbtn">Shop Now</button>
         </Link>
       </div>
-      <img src={image} alt="" />
+      <img src={image} alt="" draggable="false" />
     </div>
   );
 };

@@ -6,6 +6,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { ADD_TO_CART } from "../../Redux/typings/reducerTypings";
 import { useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SingleProductPage = () => {
   const [product, setProduct] = useState({});
@@ -14,6 +16,12 @@ const SingleProductPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  // const notify = () => {
+  //   toast.success("Item added to cart!", {
+  //     position: toast.POSITION.BOTTOM_RIGHT,
+  //   });
+  // };
 
   useEffect(() => {
     fetchProductData();
@@ -40,19 +48,24 @@ const SingleProductPage = () => {
   const handleAddToCart = (product) => {
     const productWithQuantity = { ...product, quantity };
     dispatch({ type: ADD_TO_CART, payload: productWithQuantity });
+    toast.success("Item added to cart!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
   };
 
   return (
     <Layout>
+      <ToastContainer />
       <div className="single-product">
         <div className="product-image">
-          <img src={activeImage} alt="" className="image" />
+          <img src={activeImage} alt="" draggable="false" className="image" />
           <div className="additional-images">
             {product.images?.map((image, key) => (
               <img
                 src={image}
                 alt=""
                 key={key}
+                draggable="false"
                 onClick={() => setActiveImage(image)}
               />
             ))}

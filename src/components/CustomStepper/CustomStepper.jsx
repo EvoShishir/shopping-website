@@ -6,7 +6,7 @@ import StepLabel from "@mui/material/StepLabel";
 import "./CustomStepper.css";
 
 const CustomStepper = ({ step }) => {
-  const steps = ["Shopping Cart", "Checkout", "Done"];
+  const steps = ["Shopping Cart", "Checkout", "Order Placed"];
 
   return (
     <div className="stepper">

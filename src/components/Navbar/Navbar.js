@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { BsCart2 } from "react-icons/bs";
 import logo from "../../Images/Vector.png";
 import "./Navbar.css";
 
@@ -24,7 +25,9 @@ const Navbar = () => {
         <div className="navItems">
           <a href="/products">Catalogue</a>
           <a href="/profile">Profile</a>
-          <a href="/cart">Cart</a>
+          <a href="/cart">
+            <BsCart2 />
+          </a>
         </div>
         {user ? (
           <button onClick={handleLogout} className="sign-up">

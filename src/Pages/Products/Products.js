@@ -49,7 +49,7 @@ const Products = () => {
     } finally {
       setTimeout(() => {
         setLoading(false);
-      }, 2000);
+      }, 1000);
     }
   };
 
@@ -73,38 +73,39 @@ const Products = () => {
         <div className="products-container">
           {categoryName
             ? categoryProducts?.map((categoryProduct, key) => (
-                <div className="product" key={key}>
+                <div
+                  className="product"
+                  key={key}
+                  onClick={() => handleProductClick(categoryProduct.id)}
+                >
                   <img
                     src={categoryProduct.thumbnail}
                     alt={categoryProduct.title}
+                    draggable="false"
                   />
                   <h4>{categoryProduct.title}</h4>
                   <p>{categoryProduct.description.slice(0, 40)}...</p>
                   <div className="price-and-btn">
                     <h4>${categoryProduct.price}</h4>
-                    <button
-                      className="cart-btn"
-                      onClick={() => handleProductClick(categoryProduct.id)}
-                    >
-                      SHOW MORE INFO
-                    </button>
                   </div>
                 </div>
               ))
             : products?.map((product, key) => (
-                <div className="product" key={key}>
-                  <img src={product.thumbnail} alt={product.title} />
+                <div
+                  className="product"
+                  key={key}
+                  onClick={() => handleProductClick(product.id)}
+                >
+                  <img
+                    src={product.thumbnail}
+                    alt={product.title}
+                    draggable="false"
+                  />
 
                   <h4>{product.title}</h4>
                   <p>{product.description.slice(0, 40)}...</p>
                   <div className="price-and-btn">
                     <h4>${product.price}</h4>
-                    <button
-                      className="cart-btn"
-                      onClick={() => handleProductClick(product.id)}
-                    >
-                      SHOW MORE INFO
-                    </button>
                   </div>
                 </div>
               ))}

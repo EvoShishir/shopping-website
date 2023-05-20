@@ -6,7 +6,7 @@
 
 .items-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     border-bottom: 1px solid #ddd;
     height: 50px;
     margin-bottom: 0px;
@@ -15,16 +15,36 @@
 
 .cartItem{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     border-bottom: 1px solid #ddd;
     min-height: 25vh;
     align-items: center;
     text-align: center;
 }
 
+.remove-btn{
+    cursor: pointer;
+    font-size: 20px;
+    background: transparent;
+    border: 0px solid black;
+    transition: 400ms;
+}
+
+.remove-btn:hover{
+    color: orangered;
+}
+
+.item-quantity{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
 .item{
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .cartItem img{

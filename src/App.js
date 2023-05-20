@@ -7,6 +7,7 @@ import Profile from "./Pages/Profile/Profile";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import SingleProductPage from "./Pages/SingleProductPage/SingleProductPage";
 import Cart from "./Pages/Cart/Cart";
+import Checkout from "./Pages/Checkout/Checkout";
 
 function App() {
   const router = createBrowserRouter([
@@ -36,6 +37,14 @@ function App() {
       element: (
         <ProtectedRoute>
           <Profile />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "/checkout",
+      element: (
+        <ProtectedRoute>
+          <Checkout />
         </ProtectedRoute>
       ),
     },

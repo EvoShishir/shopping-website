@@ -14,12 +14,14 @@ const Profile = () => {
             style={{ height: 150, width: 150 }}
             src={user.avatar}
             alt={user.name}
+            draggable="false"
           />
         ) : (
           <img
             style={{ height: 150, width: 150 }}
             src={avatar}
             alt={user?.name}
+            draggable="false"
           />
         )}
         <div className="info">

@@ -1,4 +1,4 @@
-import { ADD_TO_CART } from "../typings/reducerTypings";
+import { ADD_TO_CART, REMOVE_ITEM } from "../typings/reducerTypings";
 
 export const cartReducer = (
   state = {
@@ -26,6 +26,11 @@ export const cartReducer = (
       return {
         cart: [...state.cart, action.payload],
       };
+
+    case REMOVE_ITEM:
+      const itemId = action.payload;
+      const updatedItems = state.cart.filter((item) => item.id !== itemId);
+      return { ...state, cart: updatedItems };
 
     default:
       return state;

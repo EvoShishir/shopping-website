@@ -6,7 +6,6 @@ import {
 } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import "./SignUp.css";
-import image from "../../Images/1000_F_311185297_Ga1gl6pGUDx9mRE4Cf9yuYc9nbWyJOBP1.jpg";
 import image2 from "../../Images/Rectangle 21.png";
 import { FaGoogle } from "react-icons/fa";
 import { firebaseApp } from "../../firebaseconfig";
@@ -90,7 +89,7 @@ const SignUp = () => {
     {
       name: "email",
       placeholder: "Your Email Address",
-      type: "text",
+      type: "email",
       label: "Email:",
       required: true,
     },
@@ -108,16 +107,16 @@ const SignUp = () => {
       label: "Confirm Password:",
       required: true,
     },
-    {
-      name: "gender",
-      placeholder: "Select Gender",
-      type: "select",
-      options: [
-        { label: "Select", value: null },
-        { label: "Male", value: "male" },
-        { label: "Female", value: "female" },
-      ],
-    },
+    // {
+    //   name: "gender",
+    //   placeholder: "Select Gender",
+    //   type: "select",
+    //   options: [
+    //     { label: "Select", value: null },
+    //     { label: "Male", value: "male" },
+    //     { label: "Female", value: "female" },
+    //   ],
+    // },
   ];
 
   return (
@@ -132,23 +131,23 @@ const SignUp = () => {
             onSubmit={handleSubmit(handlePasswordAuthentication)}
           >
             {signupFields.map((field, key) => {
-              if (field.type === "select")
-                return (
-                  <>
-                    <br />
-                    <select
-                      {...register(field.name)}
-                      key={key}
-                      name={field.name}
-                    >
-                      {field.options.map((option, key) => (
-                        <option key={key} value={option.value}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
-                  </>
-                );
+              // if (field.type === "select")
+              //   return (
+              //     <>
+              //       <br />
+              //       <select
+              //         {...register(field.name)}
+              //         key={key}
+              //         name={field.name}
+              //       >
+              //         {field.options.map((option, key) => (
+              //           <option key={key} value={option.value}>
+              //             {option.label}
+              //           </option>
+              //         ))}
+              //       </select>
+              //     </>
+              //   );
 
               return (
                 <div className="container">

@@ -28,8 +28,18 @@
 }
 
 .selector-btn{
-    padding: 8px 15px;
+    height: 40px;
+    width: 40px;
     font-size: 20px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    transition: 400ms;
+}
+
+.selector-btn:hover{
+    background-color: black;
+    color: white;
 }
 
 .product-description{

@@ -1,6 +1,7 @@
 .profile{
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 50px;
     font-family: "poppins";
     margin: 40px 100px;
