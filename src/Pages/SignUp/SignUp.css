@@ -33,7 +33,7 @@
     margin-top: 20px;
 }
 
-input{
+.sign-up-container input{
     border-radius: 30px;
     border: 1px solid gray;
     width: 400px;
@@ -42,7 +42,7 @@ input{
     box-sizing: border-box;
 }
 
-input[placeholder]{
+.sign-up-container input[placeholder]{
     font-family: 'Poppins';
 }
 
@@ -89,13 +89,13 @@ input[placeholder]{
     background-color: rgb(74, 132, 240);
 }
 
-a{
+.sign-up-container a{
     text-decoration: none;
     color: rgb(19, 100, 251);
     transition: 0.4s;
 }
 
-a:hover{
+.sign-up-container a:hover{
     color: rgb(74, 132, 240);
 }
 

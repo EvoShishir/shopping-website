@@ -1,4 +1,8 @@
-import { ADD_TO_CART, REMOVE_ITEM } from "../typings/reducerTypings";
+import {
+  ADD_TO_CART,
+  DELETE_CART,
+  REMOVE_ITEM,
+} from "../typings/reducerTypings";
 
 export const cartReducer = (
   state = {
@@ -7,30 +11,58 @@ export const cartReducer = (
   action
 ) => {
   switch (action.type) {
+    // case ADD_TO_CART:
+    //   let alreadyExists = state.cart.find(
+    //     (item) => item.id === action.payload.id
+    //   );
+
+    //   if (alreadyExists) {
+    //     const emptyCart = state.cart.filter(
+    //       (item) => item.id !== action.payload.id
+    //     );
+
+    //     emptyCart.push(action.payload);
+    //     return {
+    //       cart: [...emptyCart],
+    //     };
+    //   }
+
+    //   return {
+    //     cart: [...state.cart, action.payload],
+    //   };
+
     case ADD_TO_CART:
-      let alreadyExists = state.cart.find(
-        (item) => item.id === action.payload.id
+      const updatedCartItem = action.payload;
+      const existingItemIndex = state.cart.findIndex(
+        (item) => item.id === updatedCartItem.id
       );
 
-      if (alreadyExists) {
-        const emptyCart = state.cart.filter(
-          (item) => item.id !== action.payload.id
-        );
+      if (existingItemIndex !== -1) {
+        const updatedCart = [...state.cart];
+        updatedCart[existingItemIndex] = {
+          ...updatedCart[existingItemIndex],
+          quantity: updatedCartItem.quantity,
+        };
 
-        emptyCart.push(action.payload);
         return {
-          cart: [...emptyCart],
+          cart: updatedCart,
         };
       }
 
       return {
-        cart: [...state.cart, action.payload],
+        cart: [...state.cart, updatedCartItem],
       };
 
     case REMOVE_ITEM:
       const itemId = action.payload;
       const updatedItems = state.cart.filter((item) => item.id !== itemId);
       return { ...state, cart: updatedItems };
+
+    case DELETE_CART:
+      return {
+        ...state,
+        cart: [],
+      };
 
     default:
       return state;

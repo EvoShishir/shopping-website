@@ -7,7 +7,9 @@ import Profile from "./Pages/Profile/Profile";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import SingleProductPage from "./Pages/SingleProductPage/SingleProductPage";
 import Cart from "./Pages/Cart/Cart";
+import Payment from "./Pages/Payment/Payment";
 import Checkout from "./Pages/Checkout/Checkout";
+import OrderPlaced from "./Pages/OrderPlaced/OrderPlaced";
 
 function App() {
   const router = createBrowserRouter([
@@ -45,6 +47,22 @@ function App() {
       element: (
         <ProtectedRoute>
           <Checkout />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "/payment-info",
+      element: (
+        <ProtectedRoute>
+          <Payment />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "/order-placed",
+      element: (
+        <ProtectedRoute>
+          <OrderPlaced />
         </ProtectedRoute>
       ),
     },

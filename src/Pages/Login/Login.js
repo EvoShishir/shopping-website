@@ -6,7 +6,6 @@ import {
 } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
-import image from "../../Images/1000_F_311185297_Ga1gl6pGUDx9mRE4Cf9yuYc9nbWyJOBP1.jpg";
 import image2 from "../../Images/Rectangle 20.png";
 import { FaGoogle } from "react-icons/fa";
 import { firebaseApp } from "../../firebaseconfig";
@@ -55,7 +54,7 @@ const Login = () => {
             avatar: user.photoURL,
           },
         });
-        return navigate("/");
+        return navigate(-1);
       })
       .catch((error) => {
         console.log(error);
@@ -75,7 +74,7 @@ const Login = () => {
             avatar: user.photoURL,
           },
         });
-        return navigate("/");
+        return navigate(-1);
       })
       .catch((error) => {
         console.log(error);

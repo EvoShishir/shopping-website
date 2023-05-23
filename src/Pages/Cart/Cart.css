@@ -52,18 +52,6 @@
     height: 142px;
 }
 
-.price-breakdown{
-    display: flex;
-    margin-top: 40px;
-    flex-direction: column;
-}
-
-.breakdown{
-    display: flex;
-    gap: 30px;
-    justify-content: flex-end;
-}
-
 .total-price{
     margin-top: 20px;
     display: flex;

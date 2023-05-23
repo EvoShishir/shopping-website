@@ -54,7 +54,7 @@ const SignUp = () => {
             avatar: user.photoURL,
           },
         });
-        return navigate("/");
+        return navigate(-1);
       })
       .catch((error) => {
         console.log(error);
@@ -77,7 +77,7 @@ const SignUp = () => {
               avatar: user.photoURL,
             },
           });
-          return navigate("/");
+          return navigate(-1);
         })
         .catch((error) => {
           console.log(error);

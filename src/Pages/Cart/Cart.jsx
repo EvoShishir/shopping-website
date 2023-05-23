@@ -6,10 +6,10 @@ import "./Cart.css";
 import CustomStepper from "../../components/CustomStepper/CustomStepper";
 import { ADD_TO_CART, REMOVE_ITEM } from "../../Redux/typings/reducerTypings";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const Cart = () => {
   const [cartTotal, setCartTotal] = useState(0);
-  const [shipping, setShipping] = useState(40);
   const dispatch = useDispatch();
   const { cart } = useSelector((state) => state.cart);
   const navigate = useNavigate();
@@ -43,6 +43,9 @@ const Cart = () => {
 
   const handleRemoveItem = (itemId) => {
     dispatch({ type: REMOVE_ITEM, payload: itemId });
+    toast.success("Item removed from cart!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
   };
 
   const calculateCart = () => {
@@ -54,8 +57,19 @@ const Cart = () => {
     setCartTotal(amount);
   };
 
+  const gotoCheckout = () => {
+    if (cartTotal > 0) {
+      return navigate("/checkout");
+    } else {
+      toast.warning("Your cart is empty!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+  };
+
   return (
     <Layout>
+      <ToastContainer />
       <div className="cart-container">
         <CustomStepper step={0} />
         <div className="items-container">
@@ -100,37 +114,19 @@ const Cart = () => {
             </div>
           </div>
         ))}
-        <div className="price-breakdown">
-          <div className="breakdown">
-            <div>
-              <p className="titles">Subtotal</p>
-              <p className="prices">${cartTotal}</p>
-            </div>
-            <div>
-              <p className="titles">Shipping</p>
-              <p className="prices">${shipping}</p>
-            </div>
-            <div>
-              <p className="titles">Tax (10%)</p>
-              <p className="prices">${(cartTotal * 0.1).toFixed(2)}</p>
-            </div>
-          </div>
-          <div className="total-price">
-            <div>
-              <p className="titles">Grand Total</p>
-              <p className="grand-price">
-                ${(cartTotal + shipping + cartTotal * 0.1).toFixed(2)}
-              </p>
-            </div>
+        <div className="total-price">
+          <div>
+            <p className="titles">Subtotal</p>
+            <p className="grand-price">${cartTotal}</p>
           </div>
         </div>
         <div className="cart-buttons">
           <Link to={"/products"}>
             <button className="go-back-btn">Continue Shopping</button>
           </Link>
-          <Link to={"/checkout"}>
-            <button className="checkout-btn">Checkout</button>
-          </Link>
+          <button onClick={gotoCheckout} className="checkout-btn">
+            Checkout
+          </button>
         </div>
       </div>
     </Layout>
