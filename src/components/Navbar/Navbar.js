@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { BsCart2 } from "react-icons/bs";
 import logo from "../../Images/Vector.png";
 import "./Navbar.css";
