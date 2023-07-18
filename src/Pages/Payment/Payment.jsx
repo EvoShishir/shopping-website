@@ -36,7 +36,7 @@ const Payment = () => {
       const itemAmount = item.quantity * item.price;
       amount = amount + itemAmount;
     });
-    setCartTotal(amount + shipping + Math.floor(amount * 0.1));
+    setCartTotal(amount + shipping + Math.round(amount * 0.1));
   };
 
   const fetchClientSecret = async () => {
@@ -54,7 +54,7 @@ const Payment = () => {
   return (
     <Layout>
       {!clientSecret ? (
-        <></>
+        <h2>Communicating with stripe. Please wait...</h2>
       ) : (
         <Elements stripe={stripePromise} options={options}>
           <CustomStepper step={2} />

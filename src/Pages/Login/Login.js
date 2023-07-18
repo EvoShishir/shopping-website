@@ -7,6 +7,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import image2 from "../../Images/Rectangle 20.png";
+import loginImage from "../../Images/login.jpg";
 import { FaGoogle } from "react-icons/fa";
 import { firebaseApp } from "../../firebaseconfig";
 import { useForm } from "react-hook-form";
@@ -103,7 +104,7 @@ const Login = () => {
       <div className="background">
         <div className="sign-up-container">
           <div>
-            <img src={image2} alt="" />
+            <img src={loginImage} alt="" />
           </div>
           <form className="form" onSubmit={handleSubmit(handleLogin)}>
             {loginFields.map((field, key) => {

@@ -1,5 +1,4 @@
 .sign-up-container{
-    background-color: #F4F6F5;
     border-radius: 20px;
     padding: 20px;
     padding-bottom: 40px;
@@ -8,7 +7,6 @@
     justify-content: center;
     gap: 40px;
     margin: 0px 400px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .sign-up-container h3{
@@ -101,9 +99,16 @@
 
 .container{
     max-width: 420px;
+
 }
 
 .error {
     color: red;
     white-space: pre-wrap;
+}
+
+.form{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 50px;
+    border-radius: 20px;
 }

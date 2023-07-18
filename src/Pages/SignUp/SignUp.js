@@ -7,6 +7,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import "./SignUp.css";
 import image2 from "../../Images/Rectangle 21.png";
+import signUpImage from "../../Images/sign-up.jpg";
 import { FaGoogle } from "react-icons/fa";
 import { firebaseApp } from "../../firebaseconfig";
 import { useForm } from "react-hook-form";
@@ -107,16 +108,6 @@ const SignUp = () => {
       label: "Confirm Password:",
       required: true,
     },
-    // {
-    //   name: "gender",
-    //   placeholder: "Select Gender",
-    //   type: "select",
-    //   options: [
-    //     { label: "Select", value: null },
-    //     { label: "Male", value: "male" },
-    //     { label: "Female", value: "female" },
-    //   ],
-    // },
   ];
 
   return (
@@ -124,31 +115,13 @@ const SignUp = () => {
       <div className="background">
         <div className="sign-up-container">
           <div>
-            <img src={image2} alt="" />
+            <img src={signUpImage} alt="" />
           </div>
           <form
             className="form"
             onSubmit={handleSubmit(handlePasswordAuthentication)}
           >
             {signupFields.map((field, key) => {
-              // if (field.type === "select")
-              //   return (
-              //     <>
-              //       <br />
-              //       <select
-              //         {...register(field.name)}
-              //         key={key}
-              //         name={field.name}
-              //       >
-              //         {field.options.map((option, key) => (
-              //           <option key={key} value={option.value}>
-              //             {option.label}
-              //           </option>
-              //         ))}
-              //       </select>
-              //     </>
-              //   );
-
               return (
                 <div className="container">
                   <h3>

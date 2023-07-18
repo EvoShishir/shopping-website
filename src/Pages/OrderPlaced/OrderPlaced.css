@@ -1,13 +1,15 @@
 .confirm-page{
     margin: 0px 100px 0px 100px;
-    /* justify-content: center; */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.confirm-page h3{
+    margin-bottom: 10px;
+}
+
 .confirm-check{
     font-size: 100px;
-    /* color: #EBD96B; */
-    color: darkorange;
+    color: green;
 }
