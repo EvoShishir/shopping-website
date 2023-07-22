@@ -17,20 +17,16 @@ const SingleProductPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // const notify = () => {
-  //   toast.success("Item added to cart!", {
-  //     position: toast.POSITION.BOTTOM_RIGHT,
-  //   });
-  // };
-
   useEffect(() => {
     fetchProductData();
-  }, [id]);
+  }, []);
+
   const fetchProductData = async () => {
     try {
-      const { data } = await axios.get(`https://dummyjson.com/products/${id}`);
-      setProduct(data);
-      setActiveImage(data.images[0]);
+      const { data } = await axios.get(`http://localhost:4000/products/${id}`);
+      setProduct(data.product);
+      console.log(data.product);
+      setActiveImage(data.product.image);
     } catch (error) {
       navigate("/products");
       alert(error.response.data?.message);
@@ -46,11 +42,16 @@ const SingleProductPage = () => {
   };
 
   const handleAddToCart = (product) => {
-    const productWithQuantity = { ...product, quantity };
-    dispatch({ type: ADD_TO_CART, payload: productWithQuantity });
-    toast.success("Item added to cart!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
+    try {
+      const productWithQuantity = { ...product, quantity };
+      console.log(productWithQuantity);
+      dispatch({ type: ADD_TO_CART, payload: productWithQuantity });
+      toast.success("Item added to cart!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -58,7 +59,12 @@ const SingleProductPage = () => {
       <ToastContainer />
       <div className="single-product">
         <div className="product-image">
-          <img src={activeImage} alt="" draggable="false" className="image" />
+          <img
+            src={`http://localhost:4000/images/${activeImage}`}
+            alt=""
+            draggable="false"
+            className="image"
+          />
           <div className="additional-images">
             {product.images?.map((image, key) => (
               <img
@@ -72,7 +78,7 @@ const SingleProductPage = () => {
           </div>
         </div>
         <div className="product-info">
-          <p className="product-name">{product.title}</p>
+          <p className="product-name">{product.name}</p>
           <p className="product-price">${product.price}</p>
           <div className="quantity">
             <button

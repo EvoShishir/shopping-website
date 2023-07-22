@@ -1,0 +1,67 @@
+/* Main layout */
+.admin-category-container {
+    display: flex;
+}
+
+/* Sidebar styles */
+.admin-sidebar {
+  width: 250px;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+/* Category container styles */
+.admin-category-page {
+  margin-top: 90px;
+  padding: 20px;
+  flex: 1;
+}
+
+/* Create category form styles */
+.create-category {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.create-category h3 {
+  margin-right: 10px;
+}
+
+.create-category input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1;
+}
+
+.create-category button {
+  padding: 8px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Category item styles */
+.category-item {
+  display: block;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  gap: 50px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  text-decoration: none;
+  color: #000;
+}
+
+.category-item h2 {
+  margin: 0;
+}
+
+.category-item:hover {
+  background-color: #f0f0f0;
+}
+  

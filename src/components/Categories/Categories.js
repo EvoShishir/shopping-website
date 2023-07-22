@@ -13,10 +13,8 @@ const Categories = () => {
   }, []);
 
   const getAllCategories = async () => {
-    const { data } = await axios.get(
-      "https://dummyjson.com/products/categories"
-    );
-    dispatch({ type: "STORE_CATEGORY", payload: data });
+    const { data } = await axios.get("http://localhost:4000/categories/all");
+    dispatch({ type: "STORE_CATEGORY", payload: data.categories });
   };
 
   return (
@@ -25,10 +23,10 @@ const Categories = () => {
         <h1>ALL PRODUCT CATEGORIES</h1>
       </div>
       <div className="categories">
-        {categories?.map((category, key) => (
-          <div key={key}>
-            <Link to={`/products?category=${category}`}>
-              <button className="btn">{category}</button>
+        {categories?.map((category) => (
+          <div key={category._id}>
+            <Link to={`/products?category=${category.name}`}>
+              <button className="btn">{category.name}</button>
             </Link>
           </div>
         ))}

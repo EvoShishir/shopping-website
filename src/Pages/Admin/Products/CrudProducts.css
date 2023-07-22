@@ -1,0 +1,54 @@
+.admin-products-container{
+    margin-top: 80px;
+    font-family: "poppins";
+    margin-left: 30px;
+}
+
+.admin-items-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-bottom: 1px solid #ddd;
+    height: 50px;
+    text-align: center;
+}
+
+.admin-btn{
+    text-decoration: none;
+    color: white;
+    margin-left: 20px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    transition: 300ms;
+    background-color: black;
+}
+
+.admin-btn:hover{
+    background-color: #2f2f2f;
+}
+
+.admin-item{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-bottom: 1px solid #ddd;
+    min-height: 25vh;
+    align-items: center;
+    text-align: center;
+}
+
+.admin-buttons{
+    display: flex;
+    gap: 30px;
+}
+
+.admin-item img{
+    width: 200px;
+    height: 142px;
+}
+
+.new-product-btn{
+    margin-left: 90%;
+}
+

@@ -11,30 +11,10 @@ export const cartReducer = (
   action
 ) => {
   switch (action.type) {
-    // case ADD_TO_CART:
-    //   let alreadyExists = state.cart.find(
-    //     (item) => item.id === action.payload.id
-    //   );
-
-    //   if (alreadyExists) {
-    //     const emptyCart = state.cart.filter(
-    //       (item) => item.id !== action.payload.id
-    //     );
-
-    //     emptyCart.push(action.payload);
-    //     return {
-    //       cart: [...emptyCart],
-    //     };
-    //   }
-
-    //   return {
-    //     cart: [...state.cart, action.payload],
-    //   };
-
     case ADD_TO_CART:
       const updatedCartItem = action.payload;
       const existingItemIndex = state.cart.findIndex(
-        (item) => item.id === updatedCartItem.id
+        (item) => item._id === updatedCartItem._id
       );
 
       if (existingItemIndex !== -1) {

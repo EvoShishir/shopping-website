@@ -20,7 +20,6 @@ const OrderSummary = () => {
     });
     setCartTotal(amount);
     const tax = parseFloat((amount * 0.1).toFixed(2));
-    // setGrandTotal(amount + shipping + Math.ceil(amount * 0.1));
     setGrandTotal(amount + shipping + tax);
   };
 
@@ -36,7 +35,7 @@ const OrderSummary = () => {
       <div>
         {cart.map((item, key) => (
           <div className="order-items" key={key}>
-            <p>{item.title}</p>
+            <p>{item.name}</p>
             <p>{item.quantity}</p>
             <p>${item.price}</p>
             <p>${item.price * item.quantity}</p>

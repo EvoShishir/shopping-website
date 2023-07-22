@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../components/Layout/Layout";
 import "./Products.css";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { HashLoader } from "react-spinners";
 
 const Products = () => {
@@ -16,24 +16,25 @@ const Products = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (categoryName) {
       getCategoryProducts();
     } else {
       getAllProducts();
     }
-  }, [categoryName]);
+  }, []);
 
   const getAllProducts = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get("https://dummyjson.com/products");
+      const { data } = await axios.get("http://localhost:4000/products/all");
       dispatch({ type: "STORE_PRODUCT", payload: data.products });
     } catch (error) {
       console.log(error);
     } finally {
       setTimeout(() => {
         setLoading(false);
-      }, 2000);
+      });
     }
   };
 
@@ -41,7 +42,7 @@ const Products = () => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `https://dummyjson.com/products/category/${categoryName}`
+        `http://localhost:4000/products/category/${categoryName}`
       );
       dispatch({ type: "ADD_CATEGORY_PRODUCT", payload: data.products });
     } catch (error) {
@@ -72,37 +73,37 @@ const Products = () => {
       ) : (
         <div className="products-container">
           {categoryName
-            ? categoryProducts?.map((categoryProduct, key) => (
+            ? categoryProducts?.map((categoryProduct) => (
                 <div
                   className="product"
-                  key={key}
-                  onClick={() => handleProductClick(categoryProduct.id)}
+                  key={categoryProduct._id}
+                  onClick={() => handleProductClick(categoryProduct._id)}
                 >
                   <img
-                    src={categoryProduct.thumbnail}
-                    alt={categoryProduct.title}
+                    src={`http://localhost:4000/images/${categoryProduct.image}`}
+                    alt={categoryProduct.name}
                     draggable="false"
                   />
-                  <h4>{categoryProduct.title}</h4>
+                  <h4>{categoryProduct.name}</h4>
                   <p>{categoryProduct.description.slice(0, 40)}...</p>
                   <div className="price-and-btn">
                     <h4>${categoryProduct.price}</h4>
                   </div>
                 </div>
               ))
-            : products?.map((product, key) => (
+            : products?.map((product) => (
                 <div
                   className="product"
-                  key={key}
-                  onClick={() => handleProductClick(product.id)}
+                  key={product._id}
+                  onClick={() => handleProductClick(product._id)}
                 >
                   <img
-                    src={product.thumbnail}
-                    alt={product.title}
+                    src={`http://localhost:4000/images/${product.image}`}
+                    alt={product.name}
                     draggable="false"
                   />
 
-                  <h4>{product.title}</h4>
+                  <h4>{product.name}</h4>
                   <p>{product.description.slice(0, 40)}...</p>
                   <div className="price-and-btn">
                     <h4>${product.price}</h4>

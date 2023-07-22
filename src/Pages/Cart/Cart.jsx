@@ -84,7 +84,10 @@ const Cart = () => {
               className="item"
               onClick={() => handleProductClick(cartItem.id)}
             >
-              <img src={cartItem.thumbnail} alt="" />
+              <img
+                src={`http://localhost:4000/images/${cartItem.image}`}
+                alt=""
+              />
               <h4>{cartItem.title}</h4>
             </div>
             <div className="item-quantity">

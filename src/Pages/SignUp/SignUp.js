@@ -1,36 +1,28 @@
-import {
-  getAuth,
-  signInWithPopup,
-  GoogleAuthProvider,
-  createUserWithEmailAndPassword,
-} from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import "./SignUp.css";
-import image2 from "../../Images/Rectangle 21.png";
 import signUpImage from "../../Images/sign-up.jpg";
-import { FaGoogle } from "react-icons/fa";
-import { firebaseApp } from "../../firebaseconfig";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import Layout from "../../components/Layout/Layout";
+import { ToastContainer, toast } from "react-toastify";
+import client from "../../client/client";
 
 const SignUp = () => {
-  const auth = getAuth(firebaseApp);
   const navigate = useNavigate();
-  const provider = new GoogleAuthProvider();
   const dispatch = useDispatch();
 
   const validationSchema = yup
     .object({
+      name: yup.string().required(),
       email: yup.string().email().required(),
       password: yup
         .string()
         .required()
         .matches(
           /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
-          `At least 8 Characters\none Uppercase one Lowercase one Number one Special Case`
+          `At least 8 Characters\none Uppercase one Lowercase one Number one Special Character`
         ),
     })
     .required();
@@ -43,50 +35,41 @@ const SignUp = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const handleGoogleSignIn = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const user = result?.user;
-        dispatch({
-          type: "STORE_USER",
-          payload: {
-            name: user.displayName,
-            email: user.email,
-            avatar: user.photoURL,
-          },
-        });
-        return navigate(-1);
-      })
-      .catch((error) => {
-        console.log(error);
+  const handleRegister = async (registerData) => {
+    if (registerData.password !== registerData.confirmPassword) {
+      return toast.error("Passwords don't match", {
+        position: toast.POSITION.TOP_CENTER,
       });
-  };
+    }
 
-  const handlePasswordAuthentication = (data) => {
-    console.log(data);
-    if (data.password !== data.confirmPassword)
-      return alert("Passwords don't match");
-    else {
-      createUserWithEmailAndPassword(auth, data.email, data.password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          dispatch({
-            type: "STORE_USER",
-            payload: {
-              name: user.displayName,
-              email: user.email,
-              avatar: user.photoURL,
-            },
-          });
-          return navigate(-1);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    try {
+      const { data } = await client.post("/users/create-user", registerData);
+      localStorage.setItem("accessToken", JSON.stringify(data.token));
+      const user = data.user;
+      dispatch({
+        type: "STORE_USER",
+        payload: {
+          name: user.name,
+          email: user.email,
+          role: user.role,
+        },
+      });
+      return navigate(-1);
+    } catch (error) {
+      toast.error(error.response.data.error, {
+        position: toast.POSITION.TOP_CENTER,
+      });
     }
   };
 
   const signupFields = [
+    {
+      name: "name",
+      placeholder: "Your Name",
+      type: "name",
+      label: "Name:",
+      required: true,
+    },
     {
       name: "email",
       placeholder: "Your Email Address",
@@ -112,18 +95,16 @@ const SignUp = () => {
 
   return (
     <Layout>
+      <ToastContainer />
       <div className="background">
         <div className="sign-up-container">
           <div>
             <img src={signUpImage} alt="" />
           </div>
-          <form
-            className="form"
-            onSubmit={handleSubmit(handlePasswordAuthentication)}
-          >
+          <form className="form" onSubmit={handleSubmit(handleRegister)}>
             {signupFields.map((field, key) => {
               return (
-                <div className="container">
+                <div className="container" key={key}>
                   <h3>
                     {field.label}{" "}
                     {field.required ? (
@@ -148,18 +129,12 @@ const SignUp = () => {
             <Link>
               <button
                 className="signup-btn"
-                onClick={handleSubmit(handlePasswordAuthentication)}
+                onClick={handleSubmit(handleRegister)}
               >
                 Create account
               </button>
             </Link>
             <br />
-            <h4>or,</h4>
-            <br />
-            <button className="signup-btn-g" onClick={handleGoogleSignIn}>
-              <FaGoogle />
-              Sign up with Google
-            </button>
             <h4>
               Already have an account? <a href="/login">Login</a>
             </h4>

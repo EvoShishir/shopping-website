@@ -5,17 +5,41 @@ import { BsCart2 } from "react-icons/bs";
 import logo from "../../Images/Vector.png";
 import "./Navbar.css";
 import { ToastContainer, toast } from "react-toastify";
+import client from "../../client/client";
 
 const Navbar = () => {
   const { user } = useSelector((state) => state.user);
   const { cart } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  const handleLogout = () => {
-    dispatch({ type: "LOGOUT_USER" });
-    toast.success("Logged out successfully!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
+
+  const handleLogout = async () => {
+    try {
+      // Dispatch your action to update the state (assuming you're using Redux)
+      dispatch({ type: "LOGOUT_USER" });
+
+      // Make the POST request to the server route /users/logout
+      const response = await client.post("/users/logout");
+
+      if (response.status === 200) {
+        // Logout was successful
+        toast.success("Logged out successfully!", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      } else {
+        // Handle logout error
+        toast.error("Logout failed. Please try again later.", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      }
+    } catch (error) {
+      // Handle any network errors or other issues
+      console.error("Error occurred during logout:", error);
+      toast.error("An error occurred during logout. Please try again later.", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
   };
+
   return (
     <nav className="nav">
       <div className="logo">

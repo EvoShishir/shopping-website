@@ -20,7 +20,9 @@ const OrderPlaced = () => {
             2-5 working days. Thank you for being with us.
           </h3>
           <Link to={"/"}>
-            <Button title={"Return to Homepage"} />
+            <div className="place-btn">
+              <Button title={"Return to Homepage"} />
+            </div>
           </Link>
         </div>
       </div>

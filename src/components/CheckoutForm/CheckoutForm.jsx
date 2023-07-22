@@ -4,13 +4,15 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
-import { DELETE_CART } from "../../Redux/typings/reducerTypings";
+import client from "../../client/client";
 
 const CheckoutForm = () => {
   const { cart } = useSelector((state) => state.cart);
+  const [grandTotal, setGrandTotal] = useState(0);
   const [cartTotal, setCartTotal] = useState(0);
+  const [shipping, setShipping] = useState(40);
 
   useEffect(() => {
     countCartAmount();
@@ -23,6 +25,8 @@ const CheckoutForm = () => {
       amount = amount + itemAmount;
     });
     setCartTotal(amount);
+    const tax = parseFloat((amount * 0.1).toFixed(2));
+    setGrandTotal(amount + shipping + tax);
   };
   const navigate = useNavigate();
 
@@ -82,9 +86,30 @@ const CheckoutForm = () => {
     },
   ];
 
-  const handleClick = () => {
+  const handleClick = async (inputData) => {
+    const checkoutData = {
+      products: cart.map((item) => ({
+        product: item._id,
+        quantity: item.quantity,
+      })),
+      totalAmount: grandTotal,
+      shipping: {
+        fullName: inputData.name,
+        phoneNumber: inputData.phone,
+        address: inputData.address,
+        city: inputData.city,
+        zipCode: inputData.zip,
+      },
+    };
     if (cartTotal > 0) {
-      return navigate("/payment-info");
+      try {
+        console.log(checkoutData);
+        const data = await client.post("/orders/create", checkoutData);
+        console.log(data);
+        navigate("/payment-info");
+      } catch (error) {
+        console.error("Error creating order:", error);
+      }
     } else {
       toast.warning("Your cart is empty!", {
         position: toast.POSITION.TOP_CENTER,

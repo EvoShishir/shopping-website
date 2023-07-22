@@ -1,0 +1,43 @@
+.dashboard{
+    display: flex;
+}
+
+.dashboard-containers{
+    padding: 40px;
+    margin-top: 10%;
+    margin-left: 30px;
+    max-height: 20vh;
+    border-radius: 10px;
+    font-size: 40px;
+    font-family: 'Poppins';
+}
+
+.dashboard-items{
+    display: flex;
+}
+
+.dashboard-number{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dashboard-container1{
+    color: #197610;
+    background-color: #a7ff9f;
+}
+
+.dashboard-container2{
+    color: #233c97;
+    background-color: #95acff;
+}
+
+.dashboard-container3{
+    color: #8d3232;
+    background-color: #f98787;
+}
+
+.dashboard-container4{
+    color: #b06825;
+    background-color: #ffbe81;
+}

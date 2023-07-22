@@ -1,0 +1,105 @@
+/* src/components/Orders/Orders.css */
+
+.admin-orders{
+  display: flex;
+}
+
+/* src/components/Orders/Orders.css */
+
+.container {
+  max-width: 800px;
+  margin: 0 0;
+  padding: 20px;
+}
+
+.order-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 20px;
+}
+
+.order-item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order-item h2 {
+  margin: 0;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.order-item h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.status-dropdown {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.status-dropdown p {
+  margin: 0;
+  margin-right: 10px;
+}
+
+.status-dropdown select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.product-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.product-item {
+  border: 1px solid black;
+  padding-left: 5px;
+  margin: 10px 0;
+}
+
+.product-name {
+  flex: 1;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.product-details {
+  display: flex;
+  align-items: center;
+}
+
+.product-details span + span {
+  margin-left: 10px;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}
+
+/* Style for the "No orders found" message */
+.no-orders {
+  text-align: center;
+  color: #888;
+  font-size: 18px;
+}
+
+/* Style for the loading spinner */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 24px;
+  color: #888;
+}

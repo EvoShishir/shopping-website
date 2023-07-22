@@ -25,12 +25,6 @@
     text-align: center;
 }
 
-.sign-up-container img{
-    border-radius: 20px;
-    margin-right: 50px;
-    margin-top: 20px;
-}
-
 .sign-up-container input{
     border-radius: 30px;
     border: 1px solid gray;
@@ -46,6 +40,7 @@
 
 .signup-btn{
     margin-top: 10px;
+    margin-bottom: 5px;
     font-family: 'Poppins';
     font-weight: 500;
     width: 400px;
@@ -53,8 +48,10 @@
     background-color: black;
     color: white;
     padding: 10px 30px;
+    margin-bottom: 20px;
     border-radius: 30px;
     transition: 0.4s;
+    cursor: pointer;
 }
 
 .signup-btn-g{
@@ -62,7 +59,8 @@
     gap: 10px;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
+    /* margin-top: 10px; */
+    margin-bottom: 10px;
     font-family: 'Poppins';
     font-weight: 500;
     width: 400px;

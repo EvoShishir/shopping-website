@@ -1,27 +1,18 @@
-import {
-  getAuth,
-  signInWithPopup,
-  GoogleAuthProvider,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
-import image2 from "../../Images/Rectangle 20.png";
 import loginImage from "../../Images/login.jpg";
-import { FaGoogle } from "react-icons/fa";
-import { firebaseApp } from "../../firebaseconfig";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import Layout from "../../components/Layout/Layout";
+import { ToastContainer, toast } from "react-toastify";
+import client from "../../client/client";
 
 const Login = () => {
   const { user } = useSelector((state) => state.user);
-  const auth = getAuth(firebaseApp);
   const navigate = useNavigate();
-  const provider = new GoogleAuthProvider();
   const dispatch = useDispatch();
 
   const validationSchema = yup
@@ -40,46 +31,30 @@ const Login = () => {
   });
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (user) return navigate("/");
   }, []);
 
-  const handleGoogleSignIn = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const user = result.user;
-        dispatch({
-          type: "STORE_USER",
-          payload: {
-            name: user.displayName,
-            email: user.email,
-            avatar: user.photoURL,
-          },
-        });
-        return navigate(-1);
-      })
-      .catch((error) => {
-        console.log(error);
+  const handleLogin = async (loginData) => {
+    try {
+      const { data } = await client.post("/users/login", loginData);
+      localStorage.setItem("accessToken", JSON.stringify(data.token));
+      const user = data.user;
+      dispatch({
+        type: "STORE_USER",
+        payload: {
+          name: user.name,
+          email: user.email,
+          role: user.role,
+        },
       });
-  };
-
-  const handleLogin = (data) => {
-    console.log(data);
-    signInWithEmailAndPassword(auth, data.email, data.password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        dispatch({
-          type: "STORE_USER",
-          payload: {
-            name: user.displayName,
-            email: user.email,
-            avatar: user.photoURL,
-          },
-        });
-        return navigate(-1);
-      })
-      .catch((error) => {
-        console.log(error);
+      return navigate(-1);
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data, {
+        position: toast.POSITION.TOP_CENTER,
       });
+    }
   };
 
   const loginFields = [
@@ -101,6 +76,7 @@ const Login = () => {
 
   return (
     <Layout>
+      <ToastContainer />
       <div className="background">
         <div className="sign-up-container">
           <div>
@@ -142,12 +118,6 @@ const Login = () => {
               </button>
             </Link>
             <br />
-            <h4>or,</h4>
-            <br />
-            <button className="signup-btn-g" onClick={handleGoogleSignIn}>
-              <FaGoogle />
-              Sign in with Google
-            </button>
             <h4>
               Don't have an account? <a href="/sign-up">Sign Up</a>
             </h4>

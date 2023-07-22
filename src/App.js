@@ -10,6 +10,11 @@ import Cart from "./Pages/Cart/Cart";
 import Payment from "./Pages/Payment/Payment";
 import Checkout from "./Pages/Checkout/Checkout";
 import OrderPlaced from "./Pages/OrderPlaced/OrderPlaced";
+import Dashboard from "./Pages/Admin/Dashboard/Dashboard";
+import CrudProducts from "./Pages/Admin/Products/CrudProducts";
+import CrudCategories from "./Pages/Admin/Categories/CrudCategories";
+import Orders from "./Pages/Admin/Orders/Orders";
+import CreateProduct from "./Pages/Admin/CreateProduct/CreateProduct";
 
 function App() {
   const router = createBrowserRouter([
@@ -63,6 +68,46 @@ function App() {
       element: (
         <ProtectedRoute>
           <OrderPlaced />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "/admin",
+      element: (
+        <ProtectedRoute>
+          <Dashboard />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "/admin/products",
+      element: (
+        <ProtectedRoute>
+          <CrudProducts />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "/admin/products/create",
+      element: (
+        <ProtectedRoute>
+          <CreateProduct />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "/admin/categories",
+      element: (
+        <ProtectedRoute>
+          <CrudCategories />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "/admin/orders",
+      element: (
+        <ProtectedRoute>
+          <Orders />
         </ProtectedRoute>
       ),
     },

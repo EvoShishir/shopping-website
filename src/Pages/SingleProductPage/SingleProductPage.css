@@ -16,6 +16,11 @@
     margin-bottom: 20px;
 }
 
+.image{
+    height: 333px;
+    width: 500px;
+}
+
 .quantity{
     display: flex;
     gap: 10px;
