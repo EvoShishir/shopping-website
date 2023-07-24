@@ -114,13 +114,13 @@ const SignUp = () => {
                     )}
                   </h3>
                   <input
+                    className="sign-up-input"
                     {...register(field.name)}
                     key={key}
                     type={field.type}
                     name={field.name}
                     placeholder={field.placeholder}
                   />
-                  <br />
                   <small className="error">{errors[field.name]?.message}</small>
                 </div>
               );

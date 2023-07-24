@@ -35,7 +35,7 @@ export const cartReducer = (
 
     case REMOVE_ITEM:
       const itemId = action.payload;
-      const updatedItems = state.cart.filter((item) => item.id !== itemId);
+      const updatedItems = state.cart.filter((item) => item._id !== itemId);
       return { ...state, cart: updatedItems };
 
     case DELETE_CART:

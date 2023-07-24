@@ -82,13 +82,13 @@ const Cart = () => {
           <div className="cartItem" key={key}>
             <div
               className="item"
-              onClick={() => handleProductClick(cartItem.id)}
+              onClick={() => handleProductClick(cartItem._id)}
             >
               <img
                 src={`http://localhost:4000/images/${cartItem.image}`}
                 alt=""
               />
-              <h4>{cartItem.title}</h4>
+              <h4>{cartItem.name}</h4>
             </div>
             <div className="item-quantity">
               <button
@@ -110,7 +110,7 @@ const Cart = () => {
             <div>
               <button
                 className="remove-btn"
-                onClick={() => handleRemoveItem(cartItem.id)}
+                onClick={() => handleRemoveItem(cartItem._id)}
               >
                 <BsTrash />
               </button>

@@ -7,10 +7,15 @@ import { TbBrandCashapp } from "react-icons/tb";
 import { FiShoppingCart } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import client from "../../../client/client";
 
 const Dashboard = () => {
   const { user } = useSelector((state) => state.user);
   const [admin, setAdmin] = useState(false);
+  const [userCount, setUserCount] = useState(0);
+  const [productCount, setProductCount] = useState(0);
+  const [orderCount, setOrderCount] = useState(0);
+  const [salesCount, setSalesCount] = useState(0);
 
   useEffect(() => {
     if (user.role === "admin") {
@@ -19,6 +24,38 @@ const Dashboard = () => {
       setAdmin(false);
     }
   }, [user.role]);
+
+  useEffect(() => {
+    totalUser();
+    totalProducts();
+    totalOrders();
+  }, []);
+
+  const totalUser = async () => {
+    const { data } = await client.get("users/get-users");
+    const total = data.users;
+    setUserCount(total.length);
+  };
+
+  const totalProducts = async () => {
+    const { data } = await client.get("products/all");
+    const total = data.products;
+    setProductCount(total.length);
+  };
+
+  const totalOrders = async () => {
+    const { data } = await client.get("orders/all");
+    const total = data.orders;
+    setOrderCount(total.length);
+    console.log(total);
+    let amount = 0;
+    total.forEach((order) => {
+      console.log(order);
+      const salesAmount = order.totalAmount;
+      amount = amount + salesAmount;
+    });
+    setSalesCount(amount.toFixed(2));
+  };
 
   return (
     <>
@@ -30,28 +67,28 @@ const Dashboard = () => {
               <div className="dashboard-containers dashboard-container1">
                 <h3 className="dashboard-number">
                   <MdOutlinePeopleAlt />
-                  69420
+                  {userCount}
                 </h3>
                 <h3>Total Users</h3>
               </div>
               <div className="dashboard-containers dashboard-container2">
                 <h3 className="dashboard-number">
                   <BsSave2 />
-                  69420
+                  {productCount}
                 </h3>
                 <h3>Total Products</h3>
               </div>
               <div className="dashboard-containers dashboard-container3">
                 <h3 className="dashboard-number">
                   <FiShoppingCart />
-                  69420
+                  {orderCount}
                 </h3>
                 <h3>Total Orders</h3>
               </div>
               <div className="dashboard-containers dashboard-container4">
                 <h3 className="dashboard-number">
                   <TbBrandCashapp />
-                  69420
+                  {salesCount}
                 </h3>
                 <h3>Total Sales</h3>
               </div>

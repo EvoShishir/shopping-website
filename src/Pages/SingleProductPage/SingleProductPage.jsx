@@ -78,7 +78,7 @@ const SingleProductPage = () => {
           </div>
         </div>
         <div className="product-info">
-          <p className="product-name">{product.name}</p>
+          <p className="product-name-single">{product.name}</p>
           <p className="product-price">${product.price}</p>
           <div className="quantity">
             <button
