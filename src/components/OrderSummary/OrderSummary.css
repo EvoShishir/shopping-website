@@ -25,7 +25,8 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     border-bottom: 1px solid #ddd;
-    height: 30px;
+    height: auto;
+    min-height: 30px;
     margin-bottom: 0px;
     text-align: center;
 }
