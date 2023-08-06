@@ -25,7 +25,6 @@ const SingleProductPage = () => {
     try {
       const { data } = await axios.get(`http://localhost:4000/products/${id}`);
       setProduct(data.product);
-      console.log(data.product);
       setActiveImage(data.product.image);
     } catch (error) {
       navigate("/products");

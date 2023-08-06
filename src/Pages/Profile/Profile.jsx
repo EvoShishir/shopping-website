@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import { useSelector } from "react-redux";
 import avatar from "../../Images/blank-profile.png";
 import "./Profile.css";
+import client from "../../client/client";
 
 const Profile = () => {
   const { user } = useSelector((state) => state.user);
+  const [userOrder, setUserOrder] = useState([]);
+
+  useEffect(() => {
+    getUserOrders();
+    console.log(userOrder);
+  }, []);
+
+  const getUserOrders = async () => {
+    try {
+      const { data } = await client.get("/orders/my");
+      setUserOrder(data.orders);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <Layout>
       <div className="profile">
@@ -31,32 +48,36 @@ const Profile = () => {
       </div>
       <div>
         <div>
-          <table className="table">
-            <tr>
-              <th>Order No.</th>
-              <th>Product Name</th>
-              <th>Price</th>
-              <th>Date ordered</th>
-            </tr>
-            <tr>
-              <th>1</th>
-              <td>iPhone 9</td>
-              <td>$549</td>
-              <td>4 April, 2023</td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>iPhone X</td>
-              <td>$899</td>
-              <td>4 April, 2023</td>
-            </tr>
-            <tr>
-              <th>3</th>
-              <td>Samsung Universe 9</td>
-              <td>$1249</td>
-              <td>4 April, 2023</td>
-            </tr>
-          </table>
+          <div className="order-summary">
+            <div className="summary-container">
+              <h3>Order ID</h3>
+              <h3>Products</h3>
+              <h3>Status</h3>
+              <h3>Total Price</h3>
+            </div>
+            <div>
+              {userOrder.map((item, key) => (
+                <div className="order-items" key={key}>
+                  <p>{item._id}</p>
+                  <ul className="product-list">
+                    {item.products.map((product) => (
+                      <li key={product.product?._id} className="product-item">
+                        <h4 className="product-name">
+                          Product Name: {product.product?.name}
+                        </h4>
+                        <h5>
+                          Price: ${product.product?.price}, Quantity:{" "}
+                          {product?.quantity}
+                        </h5>
+                      </li>
+                    ))}
+                  </ul>
+                  <p>{item.status}</p>
+                  <p>${item.totalAmount}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </Layout>

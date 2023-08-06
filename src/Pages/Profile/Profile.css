@@ -1,4 +1,4 @@
-.profile{
+.profile {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,24 +7,25 @@
     margin: 40px 100px;
 }
 
-.profile img{
+.profile img {
     border-radius: 50%;
 }
 
-.table{
+.table {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 40px;
 }
 
-table, th, td {
+table,
+th,
+td {
     border-bottom: 1px solid #ddd;
-    height: 50px;
+    height: 40px;
 }
 
-table{
-    width: 40%;
+table {
+    min-width: 40%;
     border-collapse: collapse;
     text-align: center;
 }
-

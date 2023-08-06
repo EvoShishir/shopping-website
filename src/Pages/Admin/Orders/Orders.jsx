@@ -15,7 +15,6 @@ const Orders = () => {
   const fetchOrders = async () => {
     try {
       const { data } = await client.get("/orders/all");
-      console.log(data.orders);
       setOrders(data.orders);
       setIsLoading(false);
     } catch (error) {
