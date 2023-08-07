@@ -15,6 +15,7 @@ import CrudProducts from "./Pages/Admin/Products/CrudProducts";
 import CrudCategories from "./Pages/Admin/Categories/CrudCategories";
 import Orders from "./Pages/Admin/Orders/Orders";
 import CreateProduct from "./Pages/Admin/CreateProduct/CreateProduct";
+import Users from "./Pages/Admin/Users/Users";
 
 function App() {
   const router = createBrowserRouter([
@@ -76,6 +77,14 @@ function App() {
       element: (
         <ProtectedRoute>
           <Dashboard />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "/admin/users",
+      element: (
+        <ProtectedRoute>
+          <Users />
         </ProtectedRoute>
       ),
     },
