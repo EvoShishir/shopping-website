@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { BsCart2 } from "react-icons/bs";
@@ -8,9 +8,29 @@ import { ToastContainer, toast } from "react-toastify";
 import client from "../../client/client";
 
 const Navbar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
+
   const { user } = useSelector((state) => state.user);
   const { cart } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    checkIfLoggedIn();
+  }, []);
+
+  const checkIfLoggedIn = async () => {
+    try {
+      const response = await client.get("/users/me");
+      if (response.status === 200) {
+        setIsLoggedIn(true);
+      }
+    } catch (error) {
+      if (error.response.status === 401 || error.response.status === 400) {
+        setIsLoggedIn(false);
+        dispatch({ type: "LOGOUT_USER" });
+      }
+    }
+  };
 
   const handleLogout = async () => {
     try {
@@ -22,6 +42,8 @@ const Navbar = () => {
 
       if (response.status === 200) {
         // Logout was successful
+        setIsLoggedIn(false);
+        localStorage.removeItem("accessToken");
         toast.success("Logged out successfully!", {
           position: toast.POSITION.TOP_CENTER,
         });
