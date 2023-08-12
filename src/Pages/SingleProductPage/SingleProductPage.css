@@ -2,12 +2,15 @@
     padding: 30px 100px;
     display: flex;
     gap: 30px;
+    font-family: 'Poppins';
 }
 
 .product-name-single{
     font-weight: bold;
     font-size: 40px;
     margin-bottom: 20px;
+    min-height: 100px;
+    max-height: 100px;
 }
 
 .product-price{
@@ -62,4 +65,57 @@
     margin-top: 20px;
     border: 2px solid #EBD96B;
     cursor: pointer;
+}
+
+.review-form{
+    font-family: 'Poppins';
+    font-size: 20px;
+    width: 600px;
+    padding: 20px;
+    border-radius: 20px;
+    margin: 20px 100px;
+    transition: 300ms;
+    border: 1px solid rgba(100, 100, 111, 0.2);
+}
+
+.review-form textarea {
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 20px;
+    width: 100%;
+    min-height: 200px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 3px solid #e4e4e4;
+    box-sizing: border-box;
+    resize: none;
+    transition: 300ms;
+    outline: none;
+}
+
+.review-form textarea:focus {
+    border: 3px solid rgb(79, 173, 255);
+}
+
+.review-container{
+    margin-left: 80px;
+    margin-right: 100px;
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.review{
+    padding: 20px;
+    border-radius: 20px;
+    margin: 20px 0px 20px 20px;
+    transition: 300ms;
+    border: 1px solid rgba(100, 100, 111, 0.2);
+}
+
+.review:hover{
+    box-shadow: rgba(100, 100, 111, 0.43) 0px 7px 29px 0px;
 }
