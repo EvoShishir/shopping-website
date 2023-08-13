@@ -10,7 +10,6 @@
     font-size: 40px;
     margin-bottom: 20px;
     min-height: 100px;
-    max-height: 100px;
 }
 
 .product-price{
@@ -112,10 +111,5 @@
     padding: 20px;
     border-radius: 20px;
     margin: 20px 0px 20px 20px;
-    transition: 300ms;
-    border: 1px solid rgba(100, 100, 111, 0.2);
-}
-
-.review:hover{
     box-shadow: rgba(100, 100, 111, 0.43) 0px 7px 29px 0px;
 }
