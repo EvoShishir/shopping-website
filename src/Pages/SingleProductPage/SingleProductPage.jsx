@@ -3,20 +3,22 @@ import Layout from "../../components/Layout/Layout";
 import "./SingleProductPage.css";
 import Button from "../../components/core/Button/Button";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
 import { ADD_TO_CART } from "../../Redux/typings/reducerTypings";
 import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
+import client from "../../client/client";
 
 const SingleProductPage = () => {
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
   const [activeImage, setActiveImage] = useState({});
+  const [reviews, setReviews] = useState([]);
 
   const [value, setValue] = React.useState(0);
+  const [reviewDescription, setReviewDescription] = useState({});
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -24,17 +26,56 @@ const SingleProductPage = () => {
 
   useEffect(() => {
     fetchProductData();
+    fetchProductReviews();
     window.scrollTo(0, 0);
   }, []);
 
   const fetchProductData = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:4000/products/${id}`);
+      const { data } = await client.get(`/products/${id}`);
       setProduct(data.product);
       setActiveImage(data.product.image);
     } catch (error) {
       navigate("/products");
       alert(error.response.data?.message);
+    }
+  };
+
+  const fetchProductReviews = async () => {
+    try {
+      const { data } = await client.get(`/reviews/${id}`);
+      const reviews = data.reviews;
+      setReviews(reviews);
+    } catch (error) {
+      alert(error.response.data?.message);
+    }
+  };
+
+  const handleFieldChange = (e) => {
+    setReviewDescription({
+      ...reviewDescription,
+      [e.target.name]: e.target.value,
+    });
+    console.log(reviewDescription, "reviewDescription");
+  };
+
+  const placeProductReview = async (e) => {
+    e.preventDefault();
+    try {
+      if (value === 0) {
+        return toast.error("You must provide a rating", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      }
+      await client.post(`/reviews/create/${id}`, {
+        rating: value,
+        ...reviewDescription,
+      });
+      window.location.reload();
+    } catch (error) {
+      toast.error(error.response.data?.error, {
+        position: toast.POSITION.TOP_CENTER,
+      });
     }
   };
 
@@ -137,52 +178,35 @@ const SingleProductPage = () => {
           </div>
           <div>
             <h3>Say something about the product:</h3>
-            <textarea />
+            <textarea
+              name="description"
+              onChange={(e) => handleFieldChange(e)}
+            />
           </div>
-          <Button title="Post Review" />
+          <Button title="Post Review" onClick={placeProductReview} />
         </div>
         <h1
           style={{
             marginLeft: "100px",
           }}
         >
-          Reviews(4)
+          Reviews({reviews.length})
         </h1>
 
         <div className="review-container">
-          <div className="review">
-            <h3>Shishir</h3>
-            <Box
-              sx={{
-                "& > legend": { mt: 2 },
-              }}
-            >
-              <Rating name="read-only" value={5} readOnly />
-            </Box>
-            <p>Absolutely Loved the product!</p>
-          </div>
-          <div className="review">
-            <h3>Shishir</h3>
-            <Box
-              sx={{
-                "& > legend": { mt: 2 },
-              }}
-            >
-              <Rating name="read-only" value={5} readOnly />
-            </Box>
-            <p>Absolutely Loved the product!</p>
-          </div>
-          <div className="review">
-            <h3>Shishir</h3>
-            <Box
-              sx={{
-                "& > legend": { mt: 2 },
-              }}
-            >
-              <Rating name="read-only" value={5} readOnly />
-            </Box>
-            <p>Absolutely Loved the product!</p>
-          </div>
+          {reviews?.map((review) => (
+            <div className="review" key={review.key}>
+              <h3>{review.user.name}</h3>
+              <Box
+                sx={{
+                  "& > legend": { mt: 2 },
+                }}
+              >
+                <Rating name="read-only" value={review.rating} readOnly />
+              </Box>
+              <p>{review.description}</p>
+            </div>
+          ))}
         </div>
       </div>
     </Layout>
