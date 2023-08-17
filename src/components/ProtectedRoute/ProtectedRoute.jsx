@@ -16,7 +16,6 @@ const ProtectedRoute = ({ children }) => {
   const checkIfLoggedIn = async () => {
     try {
       const response = await client.get("/users/me");
-      console.log(response);
       if (response.status === 200) {
         setIsLoggedIn(true);
       }

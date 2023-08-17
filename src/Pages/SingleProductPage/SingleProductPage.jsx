@@ -16,6 +16,7 @@ const SingleProductPage = () => {
   const [quantity, setQuantity] = useState(1);
   const [activeImage, setActiveImage] = useState({});
   const [reviews, setReviews] = useState([]);
+  const [productOrdered, setProductOrdered] = useState(null);
 
   const [value, setValue] = React.useState(0);
   const [reviewDescription, setReviewDescription] = useState({});
@@ -27,6 +28,7 @@ const SingleProductPage = () => {
   useEffect(() => {
     fetchProductData();
     fetchProductReviews();
+    checkProductOrder();
     window.scrollTo(0, 0);
   }, []);
 
@@ -76,6 +78,21 @@ const SingleProductPage = () => {
       toast.error(error.response.data?.error, {
         position: toast.POSITION.TOP_CENTER,
       });
+    }
+  };
+
+  const checkProductOrder = async () => {
+    try {
+      const { data } = await client.get(`/orders/check-order/${id}`);
+      if (data.ordered === true) {
+        setProductOrdered(true);
+      } else if (data.ordered === false) {
+        setProductOrdered(false);
+      }
+    } catch (error) {
+      if (error.response.status === 401 || error.response.status === 400) {
+        setProductOrdered(false);
+      }
     }
   };
 
@@ -152,60 +169,68 @@ const SingleProductPage = () => {
             </div>
           </div>
         </div>
-        <h1
-          style={{
-            marginLeft: "100px",
-          }}
-        >
-          Like your purchase? Leave a review!
-        </h1>
-        <div className="review-form">
-          <div className="review-rating">
-            <h3 style={{ marginBottom: "10px" }}>Rate the product:</h3>
-            <Box
-              sx={{
-                "& > legend": { mt: 2 },
+        {productOrdered ? (
+          <>
+            <h1
+              style={{
+                marginLeft: "100px",
               }}
             >
-              <Rating
-                name="simple-controlled"
-                value={value}
-                onChange={(event, newValue) => {
-                  setValue(newValue);
-                }}
-              />
-            </Box>
-          </div>
-          <div>
-            <h3>Say something about the product:</h3>
-            <textarea
-              name="description"
-              onChange={(e) => handleFieldChange(e)}
-            />
-          </div>
-          <Button title="Post Review" onClick={placeProductReview} />
-        </div>
-        <h1
-          style={{
-            marginLeft: "100px",
-          }}
-        >
-          Reviews({reviews.length})
-        </h1>
+              Like your purchase? Leave a review!
+            </h1>
+            <div className="review-form">
+              <div className="review-rating">
+                <h3 style={{ marginBottom: "10px" }}>Rate the product:</h3>
+                <Box
+                  sx={{
+                    "& > legend": { mt: 2 },
+                  }}
+                >
+                  <Rating
+                    name="simple-controlled"
+                    value={value}
+                    onChange={(event, newValue) => {
+                      setValue(newValue);
+                    }}
+                  />
+                </Box>
+              </div>
+              <div>
+                <h3>Say something about the product:</h3>
+                <textarea
+                  name="description"
+                  onChange={(e) => handleFieldChange(e)}
+                />
+              </div>
+              <Button title="Post Review" onClick={placeProductReview} />
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
 
         <div className="review-container">
           {reviews?.map((review) => (
-            <div className="review" key={review.key}>
-              <h3>{review.user.name}</h3>
-              <Box
-                sx={{
-                  "& > legend": { mt: 2 },
+            <>
+              <h1
+                style={{
+                  marginLeft: "100px",
                 }}
               >
-                <Rating name="read-only" value={review.rating} readOnly />
-              </Box>
-              <p>{review.description}</p>
-            </div>
+                Reviews({reviews.length})
+              </h1>
+              <div className="review" key={review._id}>
+                <h3>{review.user.name}</h3>
+                <Box
+                  sx={{
+                    "& > legend": { mt: 2 },
+                  }}
+                >
+                  <Rating name="read-only" value={review.rating} readOnly />
+                </Box>
+                <p>{review.description}</p>
+              </div>
+            </>
           ))}
         </div>
       </div>

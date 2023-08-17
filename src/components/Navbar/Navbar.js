@@ -8,8 +8,6 @@ import { ToastContainer, toast } from "react-toastify";
 import client from "../../client/client";
 
 const Navbar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(null);
-
   const { user } = useSelector((state) => state.user);
   const { cart } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -22,11 +20,9 @@ const Navbar = () => {
     try {
       const response = await client.get("/users/me");
       if (response.status === 200) {
-        setIsLoggedIn(true);
       }
     } catch (error) {
       if (error.response.status === 401 || error.response.status === 400) {
-        setIsLoggedIn(false);
         dispatch({ type: "LOGOUT_USER" });
       }
     }
@@ -42,11 +38,11 @@ const Navbar = () => {
 
       if (response.status === 200) {
         // Logout was successful
-        setIsLoggedIn(false);
         localStorage.removeItem("accessToken");
         toast.success("Logged out successfully!", {
           position: toast.POSITION.TOP_CENTER,
         });
+        window.location.reload();
       } else {
         // Handle logout error
         toast.error("Logout failed. Please try again later.", {
