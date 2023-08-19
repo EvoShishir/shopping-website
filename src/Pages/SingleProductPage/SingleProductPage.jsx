@@ -9,7 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
-import client from "../../client/client";
+import client, { baseURL } from "../../client/client";
 
 const SingleProductPage = () => {
   const [product, setProduct] = useState({});
@@ -124,7 +124,7 @@ const SingleProductPage = () => {
         <div className="single-product">
           <div className="product-image">
             <img
-              src={`http://localhost:4000/images/${activeImage}`}
+              src={`${baseURL}/images/${activeImage}`}
               alt=""
               draggable="false"
               className="image"
@@ -208,29 +208,26 @@ const SingleProductPage = () => {
         ) : (
           <></>
         )}
-
+        <h1
+          style={{
+            marginLeft: "100px",
+          }}
+        >
+          Reviews({reviews.length})
+        </h1>
         <div className="review-container">
           {reviews?.map((review) => (
-            <>
-              <h1
-                style={{
-                  marginLeft: "100px",
+            <div className="review" key={review._id}>
+              <h3>{review.user.name}</h3>
+              <Box
+                sx={{
+                  "& > legend": { mt: 2 },
                 }}
               >
-                Reviews({reviews.length})
-              </h1>
-              <div className="review" key={review._id}>
-                <h3>{review.user.name}</h3>
-                <Box
-                  sx={{
-                    "& > legend": { mt: 2 },
-                  }}
-                >
-                  <Rating name="read-only" value={review.rating} readOnly />
-                </Box>
-                <p>{review.description}</p>
-              </div>
-            </>
+                <Rating name="read-only" value={review.rating} readOnly />
+              </Box>
+              <p>{review.description}</p>
+            </div>
           ))}
         </div>
       </div>

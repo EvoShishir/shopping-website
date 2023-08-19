@@ -7,7 +7,7 @@ import "./CrudProducts.css";
 import AdminSidebar from "../../../components/AdminSidebar/AdminSidebar";
 import { BsTrash } from "react-icons/bs";
 import { AiOutlineEdit } from "react-icons/ai";
-import client from "../../../client/client";
+import client, { baseURL } from "../../../client/client";
 
 const CrudProducts = () => {
   const { products } = useSelector((state) => state.product);
@@ -34,7 +34,7 @@ const CrudProducts = () => {
   const getAllProducts = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get("http://localhost:4000/products/all");
+      const { data } = await client.get("/products/all");
       dispatch({ type: "STORE_PRODUCT", payload: data.products });
     } catch (error) {
       console.log(error);
@@ -97,10 +97,7 @@ const CrudProducts = () => {
                 {products?.map((product) => (
                   <div className="admin-item" key={product._id}>
                     <div className="item">
-                      <img
-                        src={`http://localhost:4000/images/${product.image}`}
-                        alt=""
-                      />
+                      <img src={`${baseURL}/images/${product.image}`} alt="" />
                     </div>
                     <h4>{product?.name}</h4>
                     <h4>{product.description.slice(0, 20)}</h4>

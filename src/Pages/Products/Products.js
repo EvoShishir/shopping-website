@@ -5,6 +5,7 @@ import Layout from "../../components/Layout/Layout";
 import "./Products.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import { HashLoader } from "react-spinners";
+import client, { baseURL } from "../../client/client";
 
 const Products = () => {
   const { products, categoryProducts } = useSelector((state) => state.product);
@@ -27,7 +28,7 @@ const Products = () => {
   const getAllProducts = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get("http://localhost:4000/products/all");
+      const { data } = await client.get("/products/all");
       dispatch({ type: "STORE_PRODUCT", payload: data.products });
     } catch (error) {
       console.log(error);
@@ -41,9 +42,7 @@ const Products = () => {
   const getCategoryProducts = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(
-        `http://localhost:4000/products/category/${categoryName}`
-      );
+      const { data } = await client.get(`/products/category/${categoryName}`);
       dispatch({ type: "ADD_CATEGORY_PRODUCT", payload: data.products });
     } catch (error) {
       console.log(error);
@@ -80,7 +79,7 @@ const Products = () => {
                   onClick={() => handleProductClick(categoryProduct._id)}
                 >
                   <img
-                    src={`http://localhost:4000/images/${categoryProduct.image}`}
+                    src={`${baseURL}/images/${categoryProduct.image}`}
                     alt={categoryProduct.name}
                     draggable="false"
                   />
@@ -98,7 +97,7 @@ const Products = () => {
                   onClick={() => handleProductClick(product._id)}
                 >
                   <img
-                    src={`http://localhost:4000/images/${product.image}`}
+                    src={`${baseURL}/images/${product.image}`}
                     alt={product.name}
                     draggable="false"
                   />

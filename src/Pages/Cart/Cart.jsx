@@ -7,6 +7,7 @@ import CustomStepper from "../../components/CustomStepper/CustomStepper";
 import { ADD_TO_CART, REMOVE_ITEM } from "../../Redux/typings/reducerTypings";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { baseURL } from "../../client/client";
 
 const Cart = () => {
   const [cartTotal, setCartTotal] = useState(0);
@@ -84,10 +85,7 @@ const Cart = () => {
               className="item"
               onClick={() => handleProductClick(cartItem._id)}
             >
-              <img
-                src={`http://localhost:4000/images/${cartItem.image}`}
-                alt=""
-              />
+              <img src={`${baseURL}/images/${cartItem.image}`} alt="" />
               <h4>{cartItem.name}</h4>
             </div>
             <div className="item-quantity">

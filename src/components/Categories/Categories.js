@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import "./Categories.css";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import client from "../../client/client";
 
 const Categories = () => {
   const { categories } = useSelector((state) => state.category);
@@ -13,7 +13,7 @@ const Categories = () => {
   }, []);
 
   const getAllCategories = async () => {
-    const { data } = await axios.get("http://localhost:4000/categories/all");
+    const { data } = await client.get("/categories/all");
     dispatch({ type: "STORE_CATEGORY", payload: data.categories });
   };
 

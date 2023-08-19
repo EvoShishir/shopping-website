@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const client = axios.create({ baseURL: "http://localhost:4000" });
+export const baseURL = "https://shopping-server-shishir.onrender.com";
+
+const client = axios.create({ baseURL: baseURL });
 
 client.interceptors.request.use(
   function (config) {

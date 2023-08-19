@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import CustomStepper from "../../components/CustomStepper/CustomStepper";
 import Stripe from "../../components/Stripe/Stripe";
+import { baseURL } from "../../client/client";
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -18,7 +19,7 @@ const Payment = () => {
   const [shipping, setShipping] = useState(40);
   const [clientSecret, setClientSecret] = useState(null);
   const { cart } = useSelector((state) => state.cart);
-  const url = "http://localhost:4000";
+  const url = baseURL;
 
   useEffect(() => {
     countCartAmount();

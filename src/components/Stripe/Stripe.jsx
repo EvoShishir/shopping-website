@@ -13,6 +13,7 @@ const Stripe = () => {
   const stripe = useStripe();
   const elements = useElements();
   const dispatch = useDispatch();
+  const url = "https://shopping-website-shishir.netlify.app";
 
   const handlePaymentSubmit = async (event) => {
     // We don't want to let default form submission happen here,
@@ -31,7 +32,7 @@ const Stripe = () => {
       //`Elements` instance that was used to create the Payment Element
       elements,
       confirmParams: {
-        return_url: "http://localhost:3000/order-placed",
+        return_url: `${url}/order-placed`,
       },
     });
 
