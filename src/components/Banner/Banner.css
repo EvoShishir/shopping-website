@@ -1,57 +1,46 @@
-.main-banner{
-    display: flex;
-    justify-content: space-between;
-    background-color: #F4F6F5;
-    border-radius: 30px;
-    margin-top: 40px;
-    margin-left: 100px;
-    margin-right: 100px;
+.main-banner {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f4f6f5;
+  border-radius: 30px;
+  margin-top: 40px;
+  margin-left: 100px;
+  margin-right: 100px;
+  padding: 40px 120px 0px 120px;
 }
 
-.banner-items{
-    padding-top: 40px;
-    padding-bottom: 40px;
-    margin-left: 119px;
+.banner-items h1 {
+  font-weight: 900;
+  font-style: normal;
+  font-size: 96px;
+  line-height: 100px;
 }
 
-.banner-items h1{
-    font-weight: 900;
-    font-style: normal;
-    font-size: 96px;
-    line-height: 100px;
+.yellow {
+  background-color: #ebd96b;
+  transform: rotate(-2deg);
 }
 
-.yellow{
-    background-color: #EBD96B;
-    transform: rotate(-2deg);
+.banner-items p {
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 48px;
+  letter-spacing: -0.05em;
+  color: #191818;
 }
 
-.banner-items p{
-    font-weight: 400;
-    font-size: 32px;
-    line-height: 48px;
-    letter-spacing: -0.05em;
-    color: #191818;
+.shopbtn {
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 25px;
+  background-color: black;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 10px;
+  transition: 0.4s;
+  cursor: pointer;
 }
 
-.main-banner img{
-    /* height: 600px;
-    width: 666px; */
-    margin-right: 119px;
-}
-
-.shopbtn{
-    font-family: 'Poppins';
-    font-weight: 500;
-    font-size: 25px;
-    background-color: black;
-    color: white;
-    padding: 10px 30px;
-    border-radius: 10px;
-    transition: 0.4s;
-    cursor: pointer;
-}
-
-.shopbtn:hover{
-    background-color: rgba(0, 0, 0, 0.646);
+.shopbtn:hover {
+  background-color: rgba(0, 0, 0, 0.646);
 }

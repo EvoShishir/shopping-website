@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const baseURL = "https://shopping-server-shishir.onrender.com";
+export const baseURL = "https://shopvibe-server.vercel.app";
 
 const client = axios.create({ baseURL: baseURL });
 

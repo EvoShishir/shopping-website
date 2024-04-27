@@ -2,8 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Banner.css";
 import image from "../../Images/image.png";
-import image1 from "../../Images/2.png";
-import image2 from "../../Images/1.png";
 
 const Banner = () => {
   return (
@@ -18,7 +16,7 @@ const Banner = () => {
           <button className="shopbtn">Shop Now</button>
         </Link>
       </div>
-      <img src={image1} alt="" draggable="false" />
+      <img src={image} alt="" draggable="false" />
     </div>
   );
 };

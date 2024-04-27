@@ -64,7 +64,9 @@ const Navbar = () => {
         <a href="/">
           <img src={logo} alt="" />
         </a>
-        <a href="/">FASHION</a>
+        <a href="/">
+          Shop<span className="yellow">Vibe.</span>
+        </a>
       </div>
       <ToastContainer />
       <div className="navLinks">
