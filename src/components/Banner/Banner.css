@@ -1,12 +1,13 @@
 .main-banner {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: #f4f6f5;
   border-radius: 30px;
   margin-top: 40px;
   margin-left: 100px;
   margin-right: 100px;
-  padding: 40px 120px 0px 120px;
+  padding: 0px 120px;
 }
 
 .banner-items h1 {
