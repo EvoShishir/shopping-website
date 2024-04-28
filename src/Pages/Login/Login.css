@@ -1,26 +1,26 @@
-.sign-up-container img{
-    height: 60vh;
+.sign-up-container img {
+  width: 100%;
 }
 
-.sign-up-container input{
-    border-radius: 30px;
-    border: 1px solid gray;
-    width: 400px;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
+.sign-up-container input {
+  border-radius: 30px;
+  border: 1px solid gray;
+  max-width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
 }
 
-.sign-up-container input[placeholder]{
-    font-family: 'Poppins';
+.sign-up-container input[placeholder] {
+  font-family: "Poppins";
 }
 
-.sign-up-container a{
-    text-decoration: none;
-    color: rgb(19, 100, 251);
-    transition: 0.4s;
+.sign-up-container a {
+  text-decoration: none;
+  color: rgb(19, 100, 251);
+  transition: 0.4s;
 }
 
-.sign-up-container a:hover{
-    color: rgb(74, 132, 240);
+.sign-up-container a:hover {
+  color: rgb(74, 132, 240);
 }

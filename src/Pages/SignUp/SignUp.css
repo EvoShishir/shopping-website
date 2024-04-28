@@ -1,111 +1,115 @@
-.sign-up-container{
-    border-radius: 20px;
-    padding: 20px;
-    padding-bottom: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    margin: 0px 400px;
+.sign-up-container {
+  border-radius: 20px;
+  padding-bottom: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1300px;
+  margin: auto;
 }
 
-.sign-up-container h3{
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 900;
-    margin-bottom: 1px;
-    margin-left: 5px;
+.sign-up-container h3 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 900;
+  margin-bottom: 1px;
+  margin-left: 5px;
 }
 
-.sign-up-container h4{
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 900;
-    margin-bottom: -10px;
-    text-align: center;
+.sign-up-container h4 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 900;
+  /* margin-bottom: -10px; */
+  text-align: center;
 }
 
-.sign-up-container input{
-    border-radius: 30px;
-    border: 1px solid gray;
-    width: 400px;
-    padding: 12px 20px;
-    box-sizing: border-box;
+.sign-up-container input {
+  border-radius: 30px;
+  border: 1px solid gray;
+  width: 100%;
+  padding: 12px 20px;
+  box-sizing: border-box;
 }
 
-.sign-up-container input[placeholder]{
-    font-family: 'Poppins';
+.sign-up-container input[placeholder] {
+  font-family: "Poppins";
 }
 
-.signup-btn{
-    margin-top: 10px;
-    margin-bottom: 5px;
-    font-family: 'Poppins';
-    font-weight: 500;
-    width: 400px;
-    font-size: 20px;
-    background-color: black;
-    color: white;
-    padding: 10px 30px;
-    margin-bottom: 20px;
-    border-radius: 30px;
-    transition: 0.4s;
-    cursor: pointer;
+.signup-btn {
+  margin-top: 10px;
+  font-family: "Poppins";
+  font-weight: 500;
+  width: 100%;
+  font-size: 20px;
+  background-color: black;
+  color: white;
+  padding: 10px 30px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  transition: 0.4s;
+  cursor: pointer;
 }
 
-.signup-btn-g{
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    /* margin-top: 10px; */
-    margin-bottom: 10px;
-    font-family: 'Poppins';
-    font-weight: 500;
-    width: 400px;
-    font-size: 20px;
-    background-color: rgb(19, 100, 251);
-    color: white;
-    padding: 10px 30px;
-    border-radius: 30px;
-    border: 0px solid black;
-    transition: 0.4s;
+.signup-btn-g {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 10px; */
+  margin-bottom: 10px;
+  font-family: "Poppins";
+  font-weight: 500;
+  width: 100%;
+  font-size: 20px;
+  background-color: rgb(19, 100, 251);
+  color: white;
+  padding: 10px 30px;
+  border-radius: 30px;
+  border: 0px solid black;
+  transition: 0.4s;
 }
 
-.signup-btn-g span{
-    text-decoration: none;
+.signup-btn-g span {
+  text-decoration: none;
 }
 
-.signup-btn:hover{
-    background-color: rgba(0, 0, 0, 0.646);
+.signup-btn:hover {
+  background-color: rgba(0, 0, 0, 0.646);
 }
 
-.signup-btn-g:hover{
-    background-color: rgb(74, 132, 240);
+.signup-btn-g:hover {
+  background-color: rgb(74, 132, 240);
 }
 
-.sign-up-container a{
-    text-decoration: none;
-    color: rgb(19, 100, 251);
-    transition: 0.4s;
+.sign-up-container a {
+  text-decoration: none;
+  color: rgb(19, 100, 251);
+  transition: 0.4s;
 }
 
-.sign-up-container a:hover{
-    color: rgb(74, 132, 240);
-}
-
-.container{
-    max-width: 420px;
-
+.sign-up-container a:hover {
+  color: rgb(74, 132, 240);
 }
 
 .error {
-    color: red;
-    white-space: pre-wrap;
+  color: red;
+  white-space: pre-wrap;
 }
 
-.form{
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    padding: 50px;
-    border-radius: 20px;
+.form {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 50px;
+  border-radius: 20px;
+}
+
+@media (max-width: 1000px) {
+  .sign-up-container {
+    grid-template-columns: 1fr;
+  }
+  .sign-up-container img {
+    display: none;
+  }
 }
