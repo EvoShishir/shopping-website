@@ -8,8 +8,12 @@ const HomePage = () => {
     <Layout>
       <div>
         <Banner></Banner>
+        <br />
         <Brands></Brands>
+        <br />
+        <br />
         <Categories></Categories>
+        <br />
       </div>
     </Layout>
   );

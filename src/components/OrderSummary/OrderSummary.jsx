@@ -26,19 +26,20 @@ const OrderSummary = () => {
   return (
     <div className="order-summary">
       <h2>Order Summary:</h2>
-      <div className="summary-container">
-        <h3>Product</h3>
-        <h3>Quantity</h3>
-        <h3>Unit Price</h3>
-        <h3>Total</h3>
-      </div>
       <div>
         {cart.map((item, key) => (
           <div className="order-items" key={key}>
-            <p>{item.name}</p>
-            <p>{item.quantity}</p>
-            <p>${item.price}</p>
-            <p>${item.price * item.quantity}</p>
+            <b>{item.name}</b>
+            <p>
+              <b>Quantity: </b>
+              {item.quantity}
+            </p>
+            <p>
+              <b>Unit Price: </b>${item.price}
+            </p>
+            <p>
+              <b>Total: </b>${item.price * item.quantity}
+            </p>
           </div>
         ))}
       </div>

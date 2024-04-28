@@ -1,115 +1,182 @@
-.single-product{
-    padding: 30px 100px;
-    display: flex;
-    gap: 30px;
-    font-family: 'Poppins';
+.single-product {
+  max-width: 1300px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  font-family: "Poppins";
 }
 
-.product-name-single{
-    font-weight: bold;
-    font-size: 40px;
-    margin-bottom: 20px;
-    min-height: 100px;
+.product-name-single {
+  font-weight: bold;
+  font-size: 40px;
+  margin-bottom: 20px;
+  min-height: 100px;
 }
 
-.product-price{
-    font-weight: bold;
-    font-size: 24px;
-    margin-bottom: 20px;
+.product-price {
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
-.image{
-    height: 283.50px;
-    width: 504px;
+.image {
+  width: 100%;
 }
 
-.quantity{
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-bottom: 20px;
+.quantity {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.product-quantity{
-    font-size: 20px;
+.product-quantity {
+  font-size: 20px;
 }
 
-.selector-btn{
-    height: 40px;
-    width: 40px;
-    font-size: 20px;
-    background-color: white;
-    color: black;
-    cursor: pointer;
-    transition: 400ms;
+.selector-btn {
+  height: 40px;
+  width: 40px;
+  font-size: 20px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  transition: 400ms;
 }
 
-.selector-btn:hover{
-    background-color: black;
-    color: white;
+.selector-btn:hover {
+  background-color: black;
+  color: white;
 }
 
-.product-description{
-    margin-top: 20px;
+.product-description {
+  margin-top: 20px;
 }
 
-.additional-images{
-    display: flex;
-    gap: 20px;
+.additional-images {
+  display: flex;
+  gap: 20px;
 }
 
-.additional-images img{
-    width: 70px;
-    height: 50px;
-    margin-top: 20px;
-    border: 2px solid #EBD96B;
-    cursor: pointer;
+.additional-images img {
+  width: 70px;
+  height: 50px;
+  margin-top: 20px;
+  border: 2px solid #ebd96b;
+  cursor: pointer;
 }
 
-.review-form{
-    font-family: 'Poppins';
-    font-size: 20px;
-    width: 600px;
-    padding: 20px;
-    border-radius: 20px;
-    margin: 20px 100px;
-    transition: 300ms;
-    border: 1px solid rgba(100, 100, 111, 0.2);
+.reviewContainer {
+  max-width: 1300px;
+  margin: auto;
+}
+
+.review-form {
+  font-family: "Poppins";
+  font-size: 20px;
+  padding: 15px;
+  border-radius: 20px;
+  transition: 300ms;
+  border: 1px solid rgba(100, 100, 111, 0.2);
 }
 
 .review-form textarea {
-    font-family: 'Poppins';
-    font-weight: 500;
-    font-size: 20px;
-    width: 100%;
-    min-height: 200px;
-    padding: 12px 20px;
-    margin: 8px 0;
-    border-radius: 8px;
-    border: 3px solid #e4e4e4;
-    box-sizing: border-box;
-    resize: none;
-    transition: 300ms;
-    outline: none;
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 20px;
+  width: 100%;
+  min-height: 200px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 3px solid #e4e4e4;
+  box-sizing: border-box;
+  resize: none;
+  transition: 300ms;
+  outline: none;
 }
 
 .review-form textarea:focus {
-    border: 3px solid rgb(79, 173, 255);
+  border: 3px solid rgb(79, 173, 255);
 }
 
-.review-container{
-    margin-left: 80px;
-    margin-right: 100px;
-    font-family: 'Poppins';
-    font-weight: 500;
-    font-size: 20px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+.review-container {
+  max-width: 1300px;
+  margin: auto;
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
-.review{
-    padding: 20px;
-    border-radius: 20px;
-    margin: 20px 0px 20px 20px;
-    box-shadow: rgba(100, 100, 111, 0.43) 0px 7px 29px 0px;
+.review {
+  padding: 20px;
+  border-radius: 20px;
+  margin: 20px 0px 20px 20px;
+  box-shadow: rgba(100, 100, 111, 0.43) 0px 7px 29px 0px;
+}
+
+@media (max-width: 1367px) {
+  .single-product {
+    max-width: 1200px;
+  }
+  .reviewContainer {
+    max-width: 1200px;
+  }
+  .review-container {
+    max-width: 1200px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .single-product {
+    max-width: 1000px;
+  }
+  .reviewContainer {
+    max-width: 1000px;
+  }
+  .review-container {
+    max-width: 1000px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .single-product {
+    max-width: 800px;
+  }
+  .reviewContainer {
+    max-width: 800px;
+  }
+  .review-container {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 812px) {
+  .single-product {
+    max-width: 600px;
+    grid-template-columns: 1fr;
+  }
+  .reviewContainer {
+    max-width: 600px;
+  }
+  .review-container {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 600px) {
+  .single-product {
+    max-width: 350px;
+  }
+  .reviewContainer {
+    max-width: 350px;
+  }
+  .review-container {
+    max-width: 350px;
+  }
 }

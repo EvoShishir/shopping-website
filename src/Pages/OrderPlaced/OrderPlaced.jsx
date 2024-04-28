@@ -24,6 +24,7 @@ const OrderPlaced = () => {
               <Button title={"Return to Homepage"} />
             </div>
           </Link>
+          <br />
         </div>
       </div>
     </Layout>

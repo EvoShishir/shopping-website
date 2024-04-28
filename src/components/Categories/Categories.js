@@ -18,10 +18,11 @@ const Categories = () => {
   };
 
   return (
-    <div>
+    <div className="categoriesContainer">
       <div className="main">
-        <h1>ALL PRODUCT CATEGORIES</h1>
+        <h1>Shop By Categories</h1>
       </div>
+      <br />
       <div className="categories">
         {categories?.map((category) => (
           <div key={category._id}>

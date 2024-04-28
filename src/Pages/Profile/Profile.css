@@ -1,31 +1,16 @@
 .profile {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    font-family: "poppins";
-    margin: 40px 100px;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "poppins";
 }
 
-.profile img {
-    border-radius: 50%;
+/* .profile h1 {
+  font-size: 20px;
 }
 
-.table {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 40px;
-}
-
-table,
-th,
-td {
-    border-bottom: 1px solid #ddd;
-    height: 40px;
-}
-
-table {
-    min-width: 40%;
-    border-collapse: collapse;
-    text-align: center;
-}
+.profile h3 {
+  font-size: 15px;
+} */

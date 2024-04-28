@@ -83,7 +83,7 @@ const Products = () => {
                     alt={categoryProduct.name}
                     draggable="false"
                   />
-                  <h4>{categoryProduct.name}</h4>
+                  <h4>{categoryProduct.name.slice(0, 30)}</h4>
                   <p>{categoryProduct.description.slice(0, 40)}...</p>
                   <div className="price-and-btn">
                     <h4>${categoryProduct.price}</h4>
@@ -102,10 +102,10 @@ const Products = () => {
                     draggable="false"
                   />
 
-                  <h4>{product.name}</h4>
+                  <h4>{product.name.slice(0, 30)}...</h4>
                   <p>{product.description.slice(0, 40)}...</p>
                   <div className="price-and-btn">
-                    <h4>${product.price}</h4>
+                    <h5>${product.price}</h5>
                   </div>
                 </div>
               ))}

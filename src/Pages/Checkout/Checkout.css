@@ -1,5 +1,10 @@
-.checkout-container{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    
+.checkout-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 900px) {
+  .checkout-container {
+    grid-template-columns: 1fr;
+  }
 }

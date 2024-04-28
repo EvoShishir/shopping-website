@@ -119,6 +119,7 @@ const CheckoutForm = () => {
 
   return (
     <div className="form-container">
+      <br />
       <ToastContainer />
       <form>
         {checkoutFields.map((field, key) => {
@@ -149,6 +150,7 @@ const CheckoutForm = () => {
           </button>
         </div>
       </form>
+      <br />
     </div>
   );
 };

@@ -55,13 +55,16 @@ const Payment = () => {
   return (
     <Layout>
       {!clientSecret ? (
-        <h2>Communicating with stripe. Please wait...</h2>
+        <h2 style={{ textAlign: "center" }}>
+          Communicating with stripe. Please wait...
+        </h2>
       ) : (
         <Elements stripe={stripePromise} options={options}>
           <CustomStepper step={2} />
           <Stripe />
         </Elements>
       )}
+      <br />
     </Layout>
   );
 };

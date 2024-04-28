@@ -13,7 +13,8 @@ const Stripe = () => {
   const stripe = useStripe();
   const elements = useElements();
   const dispatch = useDispatch();
-  const url = "https://shopping-website-shishir.netlify.app";
+  const url = "https://shopvibe-client.netlify.app";
+  // const url = "http://localhost:3000";
 
   const handlePaymentSubmit = async (event) => {
     // We don't want to let default form submission happen here,

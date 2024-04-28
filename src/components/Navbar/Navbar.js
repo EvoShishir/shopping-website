@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { BsCart2 } from "react-icons/bs";
+import { BsCart2, BsListUl } from "react-icons/bs";
 import logo from "../../Images/Vector.png";
 import "./Navbar.css";
 import { ToastContainer, toast } from "react-toastify";
 import client from "../../client/client";
+
+import { DownOutlined } from "@ant-design/icons";
+import { Button, Dropdown, Space } from "antd";
 
 const Navbar = () => {
   const { user } = useSelector((state) => state.user);
@@ -58,21 +61,71 @@ const Navbar = () => {
     }
   };
 
+  const items = [
+    {
+      label: <a href="/products">Catalogue</a>,
+      key: "0",
+    },
+    {
+      label: <a href="/profile">Profile</a>,
+      key: "1",
+    },
+    {
+      type: "divider",
+    },
+    {
+      label: user ? (
+        <a href="/" onClick={handleLogout}>
+          Logout
+        </a>
+      ) : (
+        <a href="/login">Login</a>
+      ),
+      key: "3",
+      danger: true,
+    },
+  ];
+
   return (
-    <nav className="nav">
-      <div className="logo">
-        <a href="/">
-          <img src={logo} alt="" />
-        </a>
-        <a href="/">
-          Shop<span className="yellow">Vibe.</span>
-        </a>
-      </div>
+    <>
       <ToastContainer />
-      <div className="navLinks">
-        <div className="navItems">
-          <a href="/products">Catalogue</a>
-          <a href="/profile">Profile</a>
+      <nav className="nav">
+        <div className="logo">
+          <a href="/">
+            <img src={logo} alt="" />
+          </a>
+          <a href="/">ShopVibe.</a>
+        </div>
+        <div className="navLinks">
+          <div className="navItems">
+            <a href="/products">Catalogue</a>
+            <a href="/profile">Profile</a>
+            <a href="/cart" style={{ display: "flex", alignItems: "center" }}>
+              <BsCart2 />{" "}
+              <small
+                style={{
+                  color: "black",
+                  backgroundColor: "darkorange",
+                  borderRadius: "50%",
+                  fontSize: "13px",
+                  padding: "0px 5px",
+                }}
+              >
+                {cart.length}
+              </small>
+            </a>
+          </div>
+          {user ? (
+            <button onClick={handleLogout} className="sign-up">
+              LOGOUT
+            </button>
+          ) : (
+            <Link to={"/login"}>
+              <button className="sign-up">LOGIN</button>
+            </Link>
+          )}
+        </div>
+        <div className="hamBurg">
           <a href="/cart" style={{ display: "flex", alignItems: "center" }}>
             <BsCart2 />{" "}
             <small
@@ -87,18 +140,19 @@ const Navbar = () => {
               {cart.length}
             </small>
           </a>
+          <Dropdown
+            menu={{
+              items,
+            }}
+            trigger={["click"]}
+          >
+            <Button>
+              <BsListUl />
+            </Button>
+          </Dropdown>
         </div>
-        {user ? (
-          <button onClick={handleLogout} className="sign-up">
-            LOGOUT
-          </button>
-        ) : (
-          <Link to={"/login"}>
-            <button className="sign-up">LOGIN</button>
-          </Link>
-        )}
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 };
 

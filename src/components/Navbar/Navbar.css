@@ -1,59 +1,111 @@
-.nav{
-    display: flex;
-    justify-content: space-between;
-    margin: 48px 100px 56px 100px;
+.nav {
+  max-width: 1300px;
+  margin: auto;
+  font-family: "Poppins";
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 48px 0px;
 }
 
-.logo{
+.logo {
+  display: flex;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.logo img {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+
+.logo a {
+  text-decoration: none;
+  color: black;
+}
+
+.navLinks {
+  display: flex;
+}
+
+.navItems {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.sign-up {
+  font-family: "Poppins";
+  text-decoration: none;
+  font-size: 19px;
+  border-radius: 10px;
+  background-color: black;
+  padding: 12px 18px;
+  color: white;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.sign-up:hover {
+  background-color: rgba(0, 0, 0, 0.646);
+}
+
+.navItems a {
+  text-decoration: none;
+  color: black;
+  margin-right: 40px;
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.hamBurg {
+  display: none;
+}
+
+@media (max-width: 1367px) {
+  .nav {
+    max-width: 1200px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .nav {
+    max-width: 1000px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .nav {
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 812px) {
+  .nav {
+    max-width: 600px;
+  }
+
+  .navLinks {
+    display: none;
+  }
+
+  .hamBurg {
     display: flex;
     align-items: center;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 40px;
-}
+    gap: 10px;
+  }
 
-.logo img{
-    width: 30px;
-    height: 30px;
-    margin-right: 5px;
-    margin-top: -8px;
-}
-
-.logo a{
+  .hamBurg a {
     text-decoration: none;
     color: black;
+    font-size: 19px;
+  }
 }
 
-.navLinks{
-    display: flex;
-}
-
-.navItems{
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
-
-.sign-up{
-    font-family: 'Poppins';
-    text-decoration: none;
-    font-size: 24px;
-    border-radius: 10px;
-    background-color: black;
-    padding: 15px 22px;
-    color: white;
-    transition: 0.4s;
-    cursor: pointer;
-}
-
-.sign-up:hover{
-    background-color: rgba(0, 0, 0, 0.646);
-}
-
-.navItems a{
-    text-decoration: none;
-    color: black;
-    margin-right: 65px;
-    font-size: 22px;
-    font-weight: 500;
+@media (max-width: 600px) {
+  .nav {
+    max-width: 350px;
+  }
 }

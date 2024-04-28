@@ -1,7 +1,19 @@
-.brands{
-    margin-top: 30px;
-    display: flex;
-    justify-content: space-between;
-    background-color: #EBD96B;
-    padding: 60px 170px;
+.brands {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ebd96b;
+  padding: 60px 20px;
+}
+
+@media (max-width: 571px) {
+  .brands {
+    max-width: 600px;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px;
+  }
 }

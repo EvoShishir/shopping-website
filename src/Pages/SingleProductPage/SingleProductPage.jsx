@@ -170,14 +170,10 @@ const SingleProductPage = () => {
           </div>
         </div>
         {productOrdered ? (
-          <>
-            <h1
-              style={{
-                marginLeft: "100px",
-              }}
-            >
-              Like your purchase? Leave a review!
-            </h1>
+          <section className="reviewContainer">
+            <br />
+            <h1>Like your purchase? Leave a review!</h1>
+            <br />
             <div className="review-form">
               <div className="review-rating">
                 <h3 style={{ marginBottom: "10px" }}>Rate the product:</h3>
@@ -204,10 +200,12 @@ const SingleProductPage = () => {
               </div>
               <Button title="Post Review" onClick={placeProductReview} />
             </div>
-          </>
+            <br />
+          </section>
         ) : (
           <></>
         )}
+        <br />
         <h1
           style={{
             marginLeft: "100px",

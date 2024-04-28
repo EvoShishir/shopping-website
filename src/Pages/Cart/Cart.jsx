@@ -73,12 +73,6 @@ const Cart = () => {
       <ToastContainer />
       <div className="cart-container">
         <CustomStepper step={0} />
-        <div className="items-container">
-          <h3>Product</h3>
-          <h3>Quantity</h3>
-          <h3>Unit Price</h3>
-          <h3>Total</h3>
-        </div>
         {cart?.map((cartItem, key) => (
           <div className="cartItem" key={key}>
             <div
@@ -88,23 +82,33 @@ const Cart = () => {
               <img src={`${baseURL}/images/${cartItem.image}`} alt="" />
               <h4>{cartItem.name}</h4>
             </div>
-            <div className="item-quantity">
-              <button
-                className="selector-btn"
-                onClick={() => quantityChanger(cartItem, "minus")}
-              >
-                -
-              </button>
-              <h4>{cartItem.quantity}</h4>
-              <button
-                className="selector-btn"
-                onClick={() => quantityChanger(cartItem, "plus")}
-              >
-                +
-              </button>
+            <div>
+              <h4>Quantity</h4>
+              <br />
+              <div className="item-quantity">
+                <button
+                  className="selector-btn"
+                  onClick={() => quantityChanger(cartItem, "minus")}
+                >
+                  -
+                </button>
+                <h4>{cartItem.quantity}</h4>
+                <button
+                  className="selector-btn"
+                  onClick={() => quantityChanger(cartItem, "plus")}
+                >
+                  +
+                </button>
+              </div>
             </div>
-            <h4>${cartItem.price}</h4>
-            <h4>${cartItem.price * cartItem.quantity}</h4>
+            <div>
+              <h4>Unit Price</h4>
+              <h4>${cartItem.price}</h4>
+            </div>
+            <div>
+              <h4>Total</h4>
+              <h4>${cartItem.price * cartItem.quantity}</h4>
+            </div>
             <div>
               <button
                 className="remove-btn"
@@ -129,6 +133,7 @@ const Cart = () => {
             Checkout
           </button>
         </div>
+        <br />
       </div>
     </Layout>
   );

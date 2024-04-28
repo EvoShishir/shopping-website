@@ -9,26 +9,26 @@ import "./Footer.css";
 
 const Footer = () => {
   return (
-    <div className="footer">
-      <div className="left-div">
-        <h3>FASHION</h3>
-        <small>Complete your style with awesome clothes from us.</small>
-        <div className="icons">
-          <i>
-            <FaFacebookF />
-          </i>
-          <i>
-            <FaInstagram />
-          </i>
-          <i>
-            <FaTwitter />
-          </i>
-          <i>
-            <FaLinkedinIn />
-          </i>
+    <section className="footerDiv">
+      <div className="footer">
+        <div className="left-div">
+          <p>FASHION</p>
+          <small>Complete your style with awesome clothes from us.</small>
+          <div className="icons">
+            <i>
+              <FaFacebookF />
+            </i>
+            <i>
+              <FaInstagram />
+            </i>
+            <i>
+              <FaTwitter />
+            </i>
+            <i>
+              <FaLinkedinIn />
+            </i>
+          </div>
         </div>
-      </div>
-      <div className="right-div">
         <div className="side-one">
           <p>Company</p>
           <small>About</small>
@@ -56,7 +56,7 @@ const Footer = () => {
           <small>Privacy Policy</small>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
