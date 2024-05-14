@@ -13,8 +13,10 @@ const Stripe = () => {
   const stripe = useStripe();
   const elements = useElements();
   const dispatch = useDispatch();
-  const url = "https://shopvibe-client.netlify.app";
-  // const url = "http://localhost:3000";
+
+  const hostname = window.location.hostname;
+  const port = window.location.port;
+  const baseUrl = port ? `http://${hostname}:${port}` : `http://${hostname}`;
 
   const handlePaymentSubmit = async (event) => {
     // We don't want to let default form submission happen here,
@@ -33,7 +35,7 @@ const Stripe = () => {
       //`Elements` instance that was used to create the Payment Element
       elements,
       confirmParams: {
-        return_url: `${url}/order-placed`,
+        return_url: `${baseUrl}/order-placed`,
       },
     });
 

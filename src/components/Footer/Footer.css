@@ -3,6 +3,7 @@
 }
 
 .footer {
+  bottom: 0px;
   display: flex;
   justify-content: space-between;
   max-width: 1300px;

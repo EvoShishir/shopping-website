@@ -11,12 +11,12 @@ const AdminSidebar = () => {
   return (
     <div>
       <ul className="sidebar">
-        <div className="logo sidebar-logo">
+        <div className="logo sidebar-item">
           <Link className="link-item" to="/">
             <img src={logo} alt="" />
           </Link>
           <Link className="link-item" to="/">
-            FASHION
+            ShopVibe
           </Link>
         </div>
         <Link to={"/admin"} className="link-item">

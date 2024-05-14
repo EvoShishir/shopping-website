@@ -1,10 +1,6 @@
-/* src/components/Orders/Orders.css */
-
-.admin-orders{
+.admin-orders {
   display: flex;
 }
-
-/* src/components/Orders/Orders.css */
 
 .container {
   max-width: 800px;

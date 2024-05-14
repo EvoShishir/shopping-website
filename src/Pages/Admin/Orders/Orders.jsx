@@ -69,12 +69,24 @@ const Orders = () => {
                       <option value="delivered">Delivered</option>
                     </select>
                   </div>
-                  <p>Total Amount: ${order.totalAmount}</p>
-                  <p>Full Name: {order.shipping.fullName}</p>
-                  <p>Phone Number: {order.shipping.phoneNumber}</p>
-                  <p>Address: {order.shipping.address}</p>
-                  <p>City: {order.shipping.city}</p>
-                  <p>Zip Code: {order.shipping.zipCode}</p>
+                  <p>
+                    <b>Total Amount:</b> ${order.totalAmount}
+                  </p>
+                  <p>
+                    <b>Full Name:</b> {order.shipping.fullName}
+                  </p>
+                  <p>
+                    <b>Phone Number:</b> {order.shipping.phoneNumber}
+                  </p>
+                  <p>
+                    <b>Address:</b> {order.shipping.address}
+                  </p>
+                  <p>
+                    <b>City:</b> {order.shipping.city}
+                  </p>
+                  <p>
+                    <b>Zip Code:</b> {order.shipping.zipCode}
+                  </p>
                   <ul className="product-list">
                     {order.products.map((product) => (
                       <li key={product.product?._id} className="product-item">
@@ -88,8 +100,8 @@ const Orders = () => {
                       </li>
                     ))}
                   </ul>
-                  <p>Created At:</p>
-                  <p>{order.createdAt}</p>
+                  <b>Created At:</b>
+                  <p>{new Date(order.createdAt).toString()}</p>
                 </li>
               ))}
             </div>
