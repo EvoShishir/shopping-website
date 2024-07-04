@@ -1,6 +1,8 @@
 import axios from "axios";
+import env from "react-dotenv";
 
-export const baseURL = "https://shopvibe-server.vercel.app";
+export const baseURL = env.BACKEND_URL;
+console.log(baseURL);
 
 const client = axios.create({ baseURL: baseURL });
 
